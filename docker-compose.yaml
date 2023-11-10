@@ -1,0 +1,61 @@
+services:
+    redis:
+        image: redis:alpine
+        command: [ redis-server, --maxmemory, 128mb, --maxmemory-policy, volatile-lru, --save, '""' ]
+
+    db:
+        image: mariadb:10.11
+        working_dir: /application
+        command: [ mysqld, --character-set-server=utf8mb4, --collation-server=utf8mb4_unicode_ci, --innodb-file-per-table=1 ]
+        volumes:
+            - pimcore-demo-database:/var/lib/mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: ROOT
+            MYSQL_DATABASE: pimcore
+            MYSQL_USER: pimcore
+            MYSQL_PASSWORD: pimcore
+    nginx:
+        image: nginx:stable-alpine
+        ports:
+            - "80:80"
+        volumes:
+            - .:/var/www/html:ro
+            - ./.docker/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+        depends_on:
+            - php
+
+    php:
+        user: '1000:1000' # set to your uid:gid
+        image: pimcore/pimcore:php8.2-debug-latest
+        environment:
+            COMPOSER_HOME: /var/www/html
+            PHP_IDE_CONFIG: serverName=localhost
+#            PIMCORE_INSTALL_MYSQL_USERNAME: pimcore
+#            PIMCORE_INSTALL_MYSQL_PASSWORD: pimcore
+#            PIMCORE_INSTALL_ADMIN_USERNAME: admin
+#            PIMCORE_INSTALL_ADMIN_PASSWORD: admin
+        env_file:
+            - .env
+        depends_on:
+            - db
+        volumes:
+            - .:/var/www/html
+            - ./30-pimcore-php.ini:/usr/local/etc/php/conf.d/30-pimcore-php.ini
+
+    supervisord:
+        user: '1000:1000' # set to your uid:gid
+        image: pimcore/pimcore:php8.2-supervisord-latest
+        depends_on:
+            - db
+        volumes:
+            - .:/var/www/html
+            - ./.docker/supervisord.conf:/etc/supervisor/conf.d/pimcore.conf:ro
+
+    chrome:
+        image: browserless/chrome
+
+    gotenberg:
+        image: gotenberg/gotenberg:7
+
+volumes:
+    pimcore-demo-database:
