@@ -1,0 +1,1714 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  creationTimestamp: '2023-11-12T05:29:30Z'
+  generation: 161
+  managedFields:
+    - apiVersion: argoproj.io/v1alpha1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:spec:
+          .: {}
+          f:destination:
+            .: {}
+            f:namespace: {}
+            f:server: {}
+          f:project: {}
+          f:source:
+            .: {}
+            f:chart: {}
+            f:helm:
+              .: {}
+              f:parameters: {}
+              f:values: {}
+            f:repoURL: {}
+            f:targetRevision: {}
+          f:syncPolicy:
+            .: {}
+            f:syncOptions: {}
+        f:status:
+          .: {}
+          f:health: {}
+          f:summary: {}
+          f:sync:
+            .: {}
+            f:comparedTo:
+              .: {}
+              f:destination: {}
+              f:source: {}
+      manager: argocd-server
+      operation: Update
+      time: '2023-11-12T07:07:39Z'
+    - apiVersion: argoproj.io/v1alpha1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:status:
+          f:controllerNamespace: {}
+          f:health:
+            f:status: {}
+          f:history: {}
+          f:operationState:
+            .: {}
+            f:finishedAt: {}
+            f:message: {}
+            f:operation:
+              .: {}
+              f:initiatedBy:
+                .: {}
+                f:username: {}
+              f:retry: {}
+              f:sync:
+                .: {}
+                f:revision: {}
+                f:syncOptions: {}
+                f:syncStrategy:
+                  .: {}
+                  f:hook: {}
+            f:phase: {}
+            f:startedAt: {}
+            f:syncResult:
+              .: {}
+              f:resources: {}
+              f:revision: {}
+              f:source:
+                .: {}
+                f:chart: {}
+                f:helm:
+                  .: {}
+                  f:parameters: {}
+                  f:values: {}
+                f:repoURL: {}
+                f:targetRevision: {}
+          f:reconciledAt: {}
+          f:resources: {}
+          f:sourceType: {}
+          f:summary:
+            f:externalURLs: {}
+            f:images: {}
+          f:sync:
+            f:comparedTo:
+              f:destination:
+                f:namespace: {}
+                f:server: {}
+              f:source:
+                f:chart: {}
+                f:helm:
+                  .: {}
+                  f:parameters: {}
+                  f:values: {}
+                f:repoURL: {}
+                f:targetRevision: {}
+            f:revision: {}
+            f:status: {}
+      manager: argocd-application-controller
+      operation: Update
+      time: '2023-11-12T07:11:13Z'
+  name: pimcore-sbx
+  namespace: argo-cd
+  resourceVersion: '748652028'
+  uid: fa0d9891-d11f-4ab0-8c5d-e037fc2d4e9d
+  selfLink: /apis/argoproj.io/v1alpha1/namespaces/argo-cd/applications/pimcore-sbx
+status:
+  controllerNamespace: argo-cd
+  health:
+    status: Progressing
+  history:
+    - deployStartedAt: '2023-11-12T05:35:43Z'
+      deployedAt: '2023-11-12T05:35:44Z'
+      id: 1
+      revision: 1.2.2
+      source:
+        chart: nginx-php
+        helm:
+          parameters:
+            - name: persistence.data.enabled
+              value: 'false'
+            - name: service.main.ports.http.port
+              value: '8080'
+          values: >-
+            #
+
+            # IMPORTANT NOTE
+
+            #
+
+            # This chart inherits from our common library chart. You can check
+            the default values/options here:
+
+            #
+            https://github.com/k8s-at-home/library-charts/tree/main/charts/stable/common/values.yaml
+
+            #
+
+
+            image:
+              # -- image repository
+              repository: trafex/php-nginx
+              # -- image tag
+              # @default -- chart.appVersion
+              tag:
+              # -- image pull policy
+              pullPolicy: IfNotPresent
+
+            # -- environment variables. See more environment variables in the
+            [nginx-php documentation](https://nginx-php.org/docs).
+
+            # @default -- See below
+
+            env:
+              # -- Set the container timezone
+              TZ: UTC
+
+            # -- Configures service settings for the chart.
+
+            # @default -- See values.yaml
+
+            service:
+              main:
+                ports:
+                  http:
+                    port: 8080
+
+            # -- Overwrites default config files for nginx or php/php-fpm if
+            enabled.
+
+            # @default -- See
+            https://github.com/TrafeX/docker-php-nginx/tree/master/config for
+            defaults
+
+            config:
+              nginx-server.conf: {}
+
+              php-settings.ini: {}
+
+              php-fpm-server.conf: {}
+
+            ingress:
+             main:
+              enabled: true
+              annotations: 
+                kubernetes.io/ingress.class: traefik
+              hosts:
+                - host: pimcore-sbx.p.zacharie.org
+                  paths:
+                    - path: /
+                      pathType: ImplementationSpecific
+              tls:
+                - hosts:
+                    - pimcore-sbx.p.zacharie.org
+                  secretName: wildcard-zacharie-org-certificate-secret
+
+            # -- Configure persistence settings for the chart under this key.
+
+            # @default -- See values.yaml
+
+            persistence:
+              data:
+                enabled: true
+                mountPath: /var/www/html
+                size: 10Gi
+        repoURL: https://k8s-at-home.com/charts
+        targetRevision: 1.2.2
+    - deployStartedAt: '2023-11-12T05:41:59Z'
+      deployedAt: '2023-11-12T05:42:00Z'
+      id: 2
+      revision: 1.2.2
+      source:
+        chart: nginx-php
+        helm:
+          parameters:
+            - name: persistence.data.enabled
+              value: 'false'
+            - name: service.main.ports.http.port
+              value: '8080'
+          values: >-
+            #
+
+            # IMPORTANT NOTE
+
+            #
+
+            # This chart inherits from our common library chart. You can check
+            the default values/options here:
+
+            #
+            https://github.com/k8s-at-home/library-charts/tree/main/charts/stable/common/values.yaml
+
+            #
+
+
+            image:
+              # -- image repository
+              repository: trafex/php-nginx
+              # -- image tag
+              # @default -- chart.appVersion
+              tag:
+              # -- image pull policy
+              pullPolicy: IfNotPresent
+
+            # -- environment variables. See more environment variables in the
+            [nginx-php documentation](https://nginx-php.org/docs).
+
+            # @default -- See below
+
+            env:
+              # -- Set the container timezone
+              TZ: UTC
+
+            # -- Configures service settings for the chart.
+
+            # @default -- See values.yaml
+
+            service:
+              main:
+                ports:
+                  http:
+                    port: 8080
+
+            # -- Overwrites default config files for nginx or php/php-fpm if
+            enabled.
+
+            # @default -- See
+            https://github.com/TrafeX/docker-php-nginx/tree/master/config for
+            defaults
+
+            config:
+              nginx-server.conf: {}
+
+              php-settings.ini: {}
+
+              php-fpm-server.conf: {}
+
+            initContainers:
+              echo-container:
+                image: "busybox"
+                command: ['sh', '-c', 'echo Hello from init container! && sleep 3']
+
+            ingress:
+             main:
+              enabled: true
+              annotations: 
+                kubernetes.io/ingress.class: traefik
+              hosts:
+                - host: pimcore-sbx.p.zacharie.org
+                  paths:
+                    - path: /
+                      pathType: ImplementationSpecific
+              tls:
+                - hosts:
+                    - pimcore-sbx.p.zacharie.org
+                  secretName: wildcard-zacharie-org-certificate-secret
+
+            # -- Configure persistence settings for the chart under this key.
+
+            # @default -- See values.yaml
+
+            persistence:
+              data:
+                enabled: true
+                mountPath: /var/www/html
+                size: 10Gi
+        repoURL: https://k8s-at-home.com/charts
+        targetRevision: 1.2.2
+    - deployStartedAt: '2023-11-12T05:45:28Z'
+      deployedAt: '2023-11-12T05:45:29Z'
+      id: 3
+      revision: 1.2.2
+      source:
+        chart: nginx-php
+        helm:
+          parameters:
+            - name: persistence.data.enabled
+              value: 'false'
+            - name: service.main.ports.http.port
+              value: '8080'
+          values: >-
+            #
+
+            # IMPORTANT NOTE
+
+            #
+
+            # This chart inherits from our common library chart. You can check
+            the default values/options here:
+
+            #
+            https://github.com/k8s-at-home/library-charts/tree/main/charts/stable/common/values.yaml
+
+            #
+
+
+            image:
+              # -- image repository
+              repository: trafex/php-nginx
+              # -- image tag
+              # @default -- chart.appVersion
+              tag:
+              # -- image pull policy
+              pullPolicy: IfNotPresent
+
+            # -- environment variables. See more environment variables in the
+            [nginx-php documentation](https://nginx-php.org/docs).
+
+            # @default -- See below
+
+            env:
+              # -- Set the container timezone
+              TZ: UTC
+
+            # -- Configures service settings for the chart.
+
+            # @default -- See values.yaml
+
+            service:
+              main:
+                ports:
+                  http:
+                    port: 8080
+
+            # -- Overwrites default config files for nginx or php/php-fpm if
+            enabled.
+
+            # @default -- See
+            https://github.com/TrafeX/docker-php-nginx/tree/master/config for
+            defaults
+
+            config:
+              nginx-server.conf: {}
+
+              php-settings.ini: {}
+
+              php-fpm-server.conf: {}
+
+            initContainers:
+              echo-container:
+                image: "pimcore/pimcore:php8.2-latest"
+                command: ['sh', '-c', 'echo Hello from init container! && sleep 3']
+
+            ingress:
+             main:
+              enabled: true
+              annotations: 
+                kubernetes.io/ingress.class: traefik
+              hosts:
+                - host: pimcore-sbx.p.zacharie.org
+                  paths:
+                    - path: /
+                      pathType: ImplementationSpecific
+              tls:
+                - hosts:
+                    - pimcore-sbx.p.zacharie.org
+                  secretName: wildcard-zacharie-org-certificate-secret
+
+            # -- Configure persistence settings for the chart under this key.
+
+            # @default -- See values.yaml
+
+            persistence:
+              data:
+                enabled: true
+                mountPath: /var/www/html
+                size: 10Gi
+        repoURL: https://k8s-at-home.com/charts
+        targetRevision: 1.2.2
+    - deployStartedAt: '2023-11-12T05:46:34Z'
+      deployedAt: '2023-11-12T05:46:34Z'
+      id: 4
+      revision: 1.2.2
+      source:
+        chart: nginx-php
+        helm:
+          parameters:
+            - name: persistence.data.enabled
+              value: 'false'
+            - name: service.main.ports.http.port
+              value: '8080'
+          values: >-
+            #
+
+            # IMPORTANT NOTE
+
+            #
+
+            # This chart inherits from our common library chart. You can check
+            the default values/options here:
+
+            #
+            https://github.com/k8s-at-home/library-charts/tree/main/charts/stable/common/values.yaml
+
+            #
+
+
+            image:
+              # -- image repository
+              repository: trafex/php-nginx
+              # -- image tag
+              # @default -- chart.appVersion
+              tag:
+              # -- image pull policy
+              pullPolicy: IfNotPresent
+
+            # -- environment variables. See more environment variables in the
+            [nginx-php documentation](https://nginx-php.org/docs).
+
+            # @default -- See below
+
+            env:
+              # -- Set the container timezone
+              TZ: UTC
+
+            # -- Configures service settings for the chart.
+
+            # @default -- See values.yaml
+
+            service:
+              main:
+                ports:
+                  http:
+                    port: 8080
+
+            # -- Overwrites default config files for nginx or php/php-fpm if
+            enabled.
+
+            # @default -- See
+            https://github.com/TrafeX/docker-php-nginx/tree/master/config for
+            defaults
+
+            config:
+              nginx-server.conf: {}
+
+              php-settings.ini: {}
+
+              php-fpm-server.conf: {}
+
+            initContainers:
+              echo-container:
+                image: "pimcore/pimcore:php8.2-latest"
+                command: ['sh', '-c', 'echo Hello from init container! && sleep 5000']
+
+            ingress:
+             main:
+              enabled: true
+              annotations: 
+                kubernetes.io/ingress.class: traefik
+              hosts:
+                - host: pimcore-sbx.p.zacharie.org
+                  paths:
+                    - path: /
+                      pathType: ImplementationSpecific
+              tls:
+                - hosts:
+                    - pimcore-sbx.p.zacharie.org
+                  secretName: wildcard-zacharie-org-certificate-secret
+
+            # -- Configure persistence settings for the chart under this key.
+
+            # @default -- See values.yaml
+
+            persistence:
+              data:
+                enabled: true
+                mountPath: /var/www/html
+                size: 10Gi
+        repoURL: https://k8s-at-home.com/charts
+        targetRevision: 1.2.2
+    - deployStartedAt: '2023-11-12T06:19:04Z'
+      deployedAt: '2023-11-12T06:19:04Z'
+      id: 5
+      revision: 1.2.2
+      source:
+        chart: nginx-php
+        helm:
+          parameters:
+            - name: persistence.data.enabled
+              value: 'false'
+            - name: service.main.ports.http.port
+              value: '8080'
+          values: >-
+            #
+
+            # IMPORTANT NOTE
+
+            #
+
+            # This chart inherits from our common library chart. You can check
+            the default values/options here:
+
+            #
+            https://github.com/k8s-at-home/library-charts/tree/main/charts/stable/common/values.yaml
+
+            #
+
+
+            image:
+              # -- image repository
+              repository: trafex/php-nginx
+              # -- image tag
+              # @default -- chart.appVersion
+              tag:
+              # -- image pull policy
+              pullPolicy: IfNotPresent
+
+            # -- environment variables. See more environment variables in the
+            [nginx-php documentation](https://nginx-php.org/docs).
+
+            # @default -- See below
+
+            env:
+              # -- Set the container timezone
+              TZ: UTC
+
+            # -- Configures service settings for the chart.
+
+            # @default -- See values.yaml
+
+            service:
+              main:
+                ports:
+                  http:
+                    port: 8080
+
+            # -- Overwrites default config files for nginx or php/php-fpm if
+            enabled.
+
+            # @default -- See
+            https://github.com/TrafeX/docker-php-nginx/tree/master/config for
+            defaults
+
+            config:
+              nginx-server.conf: {}
+
+              php-settings.ini: {}
+
+              php-fpm-server.conf: {}
+
+            initContainers:
+              echo-container:
+                image: "pimcore/pimcore:php8.2-latest"
+                command: ['sh', '-c', 'echo Hello from init container! && sleep 5']
+
+            ingress:
+             main:
+              enabled: true
+              annotations: 
+                kubernetes.io/ingress.class: traefik
+              hosts:
+                - host: pimcore-sbx.p.zacharie.org
+                  paths:
+                    - path: /
+                      pathType: ImplementationSpecific
+              tls:
+                - hosts:
+                    - pimcore-sbx.p.zacharie.org
+                  secretName: wildcard-zacharie-org-certificate-secret
+
+            # -- Configure persistence settings for the chart under this key.
+
+            # @default -- See values.yaml
+
+            persistence:
+              data:
+                enabled: true
+                mountPath: /var/www/html
+                size: 10Gi
+        repoURL: https://k8s-at-home.com/charts
+        targetRevision: 1.2.2
+    - deployStartedAt: '2023-11-12T06:24:17Z'
+      deployedAt: '2023-11-12T06:24:18Z'
+      id: 6
+      revision: 1.2.2
+      source:
+        chart: nginx-php
+        helm:
+          parameters:
+            - name: persistence.data.enabled
+              value: 'false'
+            - name: service.main.ports.http.port
+              value: '8080'
+          values: >-
+            #
+
+            # IMPORTANT NOTE
+
+            #
+
+            # This chart inherits from our common library chart. You can check
+            the default values/options here:
+
+            #
+            https://github.com/k8s-at-home/library-charts/tree/main/charts/stable/common/values.yaml
+
+            #
+
+
+            image:
+              # -- image repository
+              repository: trafex/php-nginx
+              # -- image tag
+              # @default -- chart.appVersion
+              tag:
+              # -- image pull policy
+              pullPolicy: IfNotPresent
+
+            # -- environment variables. See more environment variables in the
+            [nginx-php documentation](https://nginx-php.org/docs).
+
+            # @default -- See below
+
+            env:
+              # -- Set the container timezone
+              TZ: UTC
+
+            # -- Configures service settings for the chart.
+
+            # @default -- See values.yaml
+
+            service:
+              main:
+                ports:
+                  http:
+                    port: 8080
+
+            # -- Overwrites default config files for nginx or php/php-fpm if
+            enabled.
+
+            # @default -- See
+            https://github.com/TrafeX/docker-php-nginx/tree/master/config for
+            defaults
+
+            config:
+              nginx-server.conf: {}
+
+              php-settings.ini: {}
+
+              php-fpm-server.conf: {}
+
+            initContainers:
+              echo-container:
+                image: "pimcore/pimcore:php8.2-latest"
+                command: ['sh', '-c', 'echo Hello from init container! && sleep 5']
+
+            ingress:
+             main:
+              enabled: true
+              annotations: 
+                kubernetes.io/ingress.class: traefik
+              hosts:
+                - host: pimcore-sbx.p.zacharie.org
+                  paths:
+                    - path: /
+                      pathType: ImplementationSpecific
+              tls:
+                - hosts:
+                    - pimcore-sbx.p.zacharie.org
+                  secretName: wildcard-zacharie-org-certificate-secret
+
+            # -- Configure persistence settings for the chart under this key.
+
+            # @default -- See values.yaml
+
+            persistence:
+              data:
+                enabled: true
+                mountPath: /var/www/html
+                size: 10Gi
+        repoURL: https://k8s-at-home.com/charts
+        targetRevision: 1.2.2
+    - deployStartedAt: '2023-11-12T06:26:10Z'
+      deployedAt: '2023-11-12T06:26:11Z'
+      id: 7
+      revision: 1.2.2
+      source:
+        chart: nginx-php
+        helm:
+          parameters:
+            - name: persistence.data.enabled
+              value: 'false'
+            - name: service.main.ports.http.port
+              value: '8080'
+          values: >-
+            #
+
+            # IMPORTANT NOTE
+
+            #
+
+            # This chart inherits from our common library chart. You can check
+            the default values/options here:
+
+            #
+            https://github.com/k8s-at-home/library-charts/tree/main/charts/stable/common/values.yaml
+
+            #
+
+
+            image:
+              # -- image repository
+              repository: trafex/php-nginx
+              # -- image tag
+              # @default -- chart.appVersion
+              tag:
+              # -- image pull policy
+              pullPolicy: IfNotPresent
+
+            # -- environment variables. See more environment variables in the
+            [nginx-php documentation](https://nginx-php.org/docs).
+
+            # @default -- See below
+
+            env:
+              # -- Set the container timezone
+              TZ: UTC
+
+            # -- Configures service settings for the chart.
+
+            # @default -- See values.yaml
+
+            service:
+              main:
+                ports:
+                  http:
+                    port: 8080
+
+            # -- Overwrites default config files for nginx or php/php-fpm if
+            enabled.
+
+            # @default -- See
+            https://github.com/TrafeX/docker-php-nginx/tree/master/config for
+            defaults
+
+            config:
+              nginx-server.conf: {}
+
+              php-settings.ini: {}
+
+              php-fpm-server.conf: {}
+
+            initContainers:
+              echo-container:
+                image: "pimcore/pimcore:php8.2-latest"
+                command: ['sh', '-c', 'echo Hello from init container! && sleep 5']
+
+            ingress:
+             main:
+              enabled: true
+              annotations: 
+                kubernetes.io/ingress.class: traefik
+              hosts:
+                - host: pimcore-sbx.p.zacharie.org
+                  paths:
+                    - path: /
+                      pathType: ImplementationSpecific
+              tls:
+                - hosts:
+                    - pimcore-sbx.p.zacharie.org
+                  secretName: wildcard-zacharie-org-certificate-secret
+
+            # -- Configure persistence settings for the chart under this key.
+
+            # @default -- See values.yaml
+
+
+            persistence:
+              data2:
+                enabled: false
+                mountPath: /var/www/html
+                size: 10Gi
+                accessMode: "ReadWriteOnce"
+
+            volumeClaimTemplates: []
+
+            # - name: data
+
+            #   mountPath: /data
+
+            #   accessMode: "ReadWriteOnce"
+
+            #   size: 1Gi
+
+            # - name: backup
+
+            #   mountPath: /backup
+
+            #   subPath: theSubPath
+
+            #   accessMode: "ReadWriteOnce"
+
+            #   size: 2Gi
+
+            #   storageClass: cheap-storage-class
+        repoURL: https://k8s-at-home.com/charts
+        targetRevision: 1.2.2
+    - deployStartedAt: '2023-11-12T06:26:49Z'
+      deployedAt: '2023-11-12T06:26:53Z'
+      id: 8
+      revision: 1.2.2
+      source:
+        chart: nginx-php
+        helm:
+          parameters:
+            - name: persistence.data.enabled
+              value: 'false'
+            - name: service.main.ports.http.port
+              value: '8080'
+          values: >-
+            #
+
+            # IMPORTANT NOTE
+
+            #
+
+            # This chart inherits from our common library chart. You can check
+            the default values/options here:
+
+            #
+            https://github.com/k8s-at-home/library-charts/tree/main/charts/stable/common/values.yaml
+
+            #
+
+
+            image:
+              # -- image repository
+              repository: trafex/php-nginx
+              # -- image tag
+              # @default -- chart.appVersion
+              tag:
+              # -- image pull policy
+              pullPolicy: IfNotPresent
+
+            # -- environment variables. See more environment variables in the
+            [nginx-php documentation](https://nginx-php.org/docs).
+
+            # @default -- See below
+
+            env:
+              # -- Set the container timezone
+              TZ: UTC
+
+            # -- Configures service settings for the chart.
+
+            # @default -- See values.yaml
+
+            service:
+              main:
+                ports:
+                  http:
+                    port: 8080
+
+            # -- Overwrites default config files for nginx or php/php-fpm if
+            enabled.
+
+            # @default -- See
+            https://github.com/TrafeX/docker-php-nginx/tree/master/config for
+            defaults
+
+            config:
+              nginx-server.conf: {}
+
+              php-settings.ini: {}
+
+              php-fpm-server.conf: {}
+
+            initContainers:
+              echo-container:
+                image: "pimcore/pimcore:php8.2-latest"
+                command: ['sh', '-c', 'echo Hello from init container! && sleep 5']
+
+            ingress:
+             main:
+              enabled: true
+              annotations: 
+                kubernetes.io/ingress.class: traefik
+              hosts:
+                - host: pimcore-sbx.p.zacharie.org
+                  paths:
+                    - path: /
+                      pathType: ImplementationSpecific
+              tls:
+                - hosts:
+                    - pimcore-sbx.p.zacharie.org
+                  secretName: wildcard-zacharie-org-certificate-secret
+
+            # -- Configure persistence settings for the chart under this key.
+
+            # @default -- See values.yaml
+
+
+            persistence:
+              data2:
+                enabled: true
+                mountPath: /var/www/html
+                size: 10Gi
+                accessMode: "ReadWriteOnce"
+
+            volumeClaimTemplates: []
+
+            # - name: data
+
+            #   mountPath: /data
+
+            #   accessMode: "ReadWriteOnce"
+
+            #   size: 1Gi
+
+            # - name: backup
+
+            #   mountPath: /backup
+
+            #   subPath: theSubPath
+
+            #   accessMode: "ReadWriteOnce"
+
+            #   size: 2Gi
+
+            #   storageClass: cheap-storage-class
+        repoURL: https://k8s-at-home.com/charts
+        targetRevision: 1.2.2
+    - deployStartedAt: '2023-11-12T06:31:16Z'
+      deployedAt: '2023-11-12T06:31:17Z'
+      id: 9
+      revision: 1.2.2
+      source:
+        chart: nginx-php
+        helm:
+          parameters:
+            - name: persistence.data.enabled
+              value: 'false'
+            - name: service.main.ports.http.port
+              value: '8080'
+          values: >-
+            #
+
+            # IMPORTANT NOTE
+
+            #
+
+            # This chart inherits from our common library chart. You can check
+            the default values/options here:
+
+            #
+            https://github.com/k8s-at-home/library-charts/tree/main/charts/stable/common/values.yaml
+
+            #
+
+
+            image:
+              # -- image repository
+              repository: trafex/php-nginx
+              # -- image tag
+              # @default -- chart.appVersion
+              tag:
+              # -- image pull policy
+              pullPolicy: IfNotPresent
+
+            # -- environment variables. See more environment variables in the
+            [nginx-php documentation](https://nginx-php.org/docs).
+
+            # @default -- See below
+
+            env:
+              # -- Set the container timezone
+              TZ: UTC
+
+            # -- Configures service settings for the chart.
+
+            # @default -- See values.yaml
+
+            service:
+              main:
+                ports:
+                  http:
+                    port: 8080
+
+            # -- Overwrites default config files for nginx or php/php-fpm if
+            enabled.
+
+            # @default -- See
+            https://github.com/TrafeX/docker-php-nginx/tree/master/config for
+            defaults
+
+            config:
+              nginx-server.conf: {}
+
+              php-settings.ini: {}
+
+              php-fpm-server.conf: {}
+
+            initContainers:
+              echo-container:
+                image: "pimcore/pimcore:php8.2-latest"
+                command: ['sh', '-c', 'echo Hello from init container! && sleep 500']
+                volumeMounts:
+                  - name: data2
+                    mountPath: /var/www/html
+            ingress:
+             main:
+              enabled: true
+              annotations: 
+                kubernetes.io/ingress.class: traefik
+              hosts:
+                - host: pimcore-sbx.p.zacharie.org
+                  paths:
+                    - path: /
+                      pathType: ImplementationSpecific
+              tls:
+                - hosts:
+                    - pimcore-sbx.p.zacharie.org
+                  secretName: wildcard-zacharie-org-certificate-secret
+
+            # -- Configure persistence settings for the chart under this key.
+
+            # @default -- See values.yaml
+
+
+            persistence:
+              data2:
+                enabled: true
+                mountPath: /var/www/html
+                size: 10Gi
+                accessMode: "ReadWriteOnce"
+
+            volumeClaimTemplates: []
+
+            # - name: data
+
+            #   mountPath: /data
+
+            #   accessMode: "ReadWriteOnce"
+
+            #   size: 1Gi
+
+            # - name: backup
+
+            #   mountPath: /backup
+
+            #   subPath: theSubPath
+
+            #   accessMode: "ReadWriteOnce"
+
+            #   size: 2Gi
+
+            #   storageClass: cheap-storage-class
+        repoURL: https://k8s-at-home.com/charts
+        targetRevision: 1.2.2
+    - deployStartedAt: '2023-11-12T07:07:39Z'
+      deployedAt: '2023-11-12T07:07:40Z'
+      id: 10
+      revision: 1.2.2
+      source:
+        chart: nginx-php
+        helm:
+          parameters:
+            - name: persistence.data.enabled
+              value: 'false'
+            - name: service.main.ports.http.port
+              value: '8080'
+          values: >-
+            #
+
+            # IMPORTANT NOTE
+
+            #
+
+            # This chart inherits from our common library chart. You can check
+            the default values/options here:
+
+            #
+            https://github.com/k8s-at-home/library-charts/tree/main/charts/stable/common/values.yaml
+
+            #
+
+
+            image:
+              # -- image repository
+              repository: trafex/php-nginx
+              # -- image tag
+              # @default -- chart.appVersion
+              tag: 3.4.0
+              # -- image pull policy
+              pullPolicy: IfNotPresent
+
+            # -- environment variables. See more environment variables in the
+            [nginx-php documentation](https://nginx-php.org/docs).
+
+            # @default -- See below
+
+            env:
+              # -- Set the container timezone
+              TZ: UTC
+
+            # -- Configures service settings for the chart.
+
+            # @default -- See values.yaml
+
+            service:
+              main:
+                ports:
+                  http:
+                    port: 8080
+
+            # -- Overwrites default config files for nginx or php/php-fpm if
+            enabled.
+
+            # @default -- See
+            https://github.com/TrafeX/docker-php-nginx/tree/master/config for
+            defaults
+
+            config:
+              nginx-server.conf: {}
+
+              php-settings.ini: {}
+
+              php-fpm-server.conf: {}
+
+            initContainers:
+              echo-container:
+                image: "pimcore/pimcore:php8.2-latest"
+                command: ['sh', '-c', 'echo Hello from init container! && sleep 500']
+                volumeMounts:
+                  - name: data2
+                    mountPath: /var/www/html
+            ingress:
+             main:
+              enabled: true
+              annotations: 
+                kubernetes.io/ingress.class: traefik
+              hosts:
+                - host: pimcore-sbx.p.zacharie.org
+                  paths:
+                    - path: /
+                      pathType: ImplementationSpecific
+              tls:
+                - hosts:
+                    - pimcore-sbx.p.zacharie.org
+                  secretName: wildcard-zacharie-org-certificate-secret
+
+            # -- Configure persistence settings for the chart under this key.
+
+            # @default -- See values.yaml
+
+
+            persistence:
+              data2:
+                enabled: true
+                mountPath: /var/www/html
+                size: 10Gi
+                accessMode: "ReadWriteOnce"
+
+            volumeClaimTemplates: []
+
+            # - name: data
+
+            #   mountPath: /data
+
+            #   accessMode: "ReadWriteOnce"
+
+            #   size: 1Gi
+
+            # - name: backup
+
+            #   mountPath: /backup
+
+            #   subPath: theSubPath
+
+            #   accessMode: "ReadWriteOnce"
+
+            #   size: 2Gi
+
+            #   storageClass: cheap-storage-class
+        repoURL: https://k8s-at-home.com/charts
+        targetRevision: 1.2.2
+  operationState:
+    finishedAt: '2023-11-12T07:07:40Z'
+    message: successfully synced (all tasks run)
+    operation:
+      initiatedBy:
+        username: admin
+      retry: {}
+      sync:
+        revision: 1.2.2
+        syncOptions:
+          - CreateNamespace=true
+        syncStrategy:
+          hook: {}
+    phase: Succeeded
+    startedAt: '2023-11-12T07:07:39Z'
+    syncResult:
+      resources:
+        - group: ''
+          hookPhase: Running
+          kind: ConfigMap
+          message: configmap/pimcore-sbx-nginx-php-settings configured
+          name: pimcore-sbx-nginx-php-settings
+          namespace: pimcore-sbx
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: ''
+          hookPhase: Running
+          kind: PersistentVolumeClaim
+          message: persistentvolumeclaim/pimcore-sbx-nginx-php-data2 unchanged
+          name: pimcore-sbx-nginx-php-data2
+          namespace: pimcore-sbx
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: ''
+          hookPhase: Running
+          kind: Service
+          message: service/pimcore-sbx-nginx-php unchanged
+          name: pimcore-sbx-nginx-php
+          namespace: pimcore-sbx
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: apps
+          hookPhase: Running
+          kind: Deployment
+          message: deployment.apps/pimcore-sbx-nginx-php configured
+          name: pimcore-sbx-nginx-php
+          namespace: pimcore-sbx
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: networking.k8s.io
+          hookPhase: Running
+          kind: Ingress
+          message: ingress.networking.k8s.io/pimcore-sbx-nginx-php unchanged
+          name: pimcore-sbx-nginx-php
+          namespace: pimcore-sbx
+          status: Synced
+          syncPhase: Sync
+          version: v1
+      revision: 1.2.2
+      source:
+        chart: nginx-php
+        helm:
+          parameters:
+            - name: persistence.data.enabled
+              value: 'false'
+            - name: service.main.ports.http.port
+              value: '8080'
+          values: >-
+            #
+
+            # IMPORTANT NOTE
+
+            #
+
+            # This chart inherits from our common library chart. You can check
+            the default values/options here:
+
+            #
+            https://github.com/k8s-at-home/library-charts/tree/main/charts/stable/common/values.yaml
+
+            #
+
+
+            image:
+              # -- image repository
+              repository: trafex/php-nginx
+              # -- image tag
+              # @default -- chart.appVersion
+              tag: 3.4.0
+              # -- image pull policy
+              pullPolicy: IfNotPresent
+
+            # -- environment variables. See more environment variables in the
+            [nginx-php documentation](https://nginx-php.org/docs).
+
+            # @default -- See below
+
+            env:
+              # -- Set the container timezone
+              TZ: UTC
+
+            # -- Configures service settings for the chart.
+
+            # @default -- See values.yaml
+
+            service:
+              main:
+                ports:
+                  http:
+                    port: 8080
+
+            # -- Overwrites default config files for nginx or php/php-fpm if
+            enabled.
+
+            # @default -- See
+            https://github.com/TrafeX/docker-php-nginx/tree/master/config for
+            defaults
+
+            config:
+              nginx-server.conf: {}
+
+              php-settings.ini: {}
+
+              php-fpm-server.conf: {}
+
+            initContainers:
+              echo-container:
+                image: "pimcore/pimcore:php8.2-latest"
+                command: ['sh', '-c', 'echo Hello from init container! && sleep 500']
+                volumeMounts:
+                  - name: data2
+                    mountPath: /var/www/html
+            ingress:
+             main:
+              enabled: true
+              annotations: 
+                kubernetes.io/ingress.class: traefik
+              hosts:
+                - host: pimcore-sbx.p.zacharie.org
+                  paths:
+                    - path: /
+                      pathType: ImplementationSpecific
+              tls:
+                - hosts:
+                    - pimcore-sbx.p.zacharie.org
+                  secretName: wildcard-zacharie-org-certificate-secret
+
+            # -- Configure persistence settings for the chart under this key.
+
+            # @default -- See values.yaml
+
+
+            persistence:
+              data2:
+                enabled: true
+                mountPath: /var/www/html
+                size: 10Gi
+                accessMode: "ReadWriteOnce"
+
+            volumeClaimTemplates: []
+
+            # - name: data
+
+            #   mountPath: /data
+
+            #   accessMode: "ReadWriteOnce"
+
+            #   size: 1Gi
+
+            # - name: backup
+
+            #   mountPath: /backup
+
+            #   subPath: theSubPath
+
+            #   accessMode: "ReadWriteOnce"
+
+            #   size: 2Gi
+
+            #   storageClass: cheap-storage-class
+        repoURL: https://k8s-at-home.com/charts
+        targetRevision: 1.2.2
+  reconciledAt: '2023-11-12T07:11:13Z'
+  resources:
+    - kind: ConfigMap
+      name: pimcore-sbx-nginx-php-settings
+      namespace: pimcore-sbx
+      status: Synced
+      version: v1
+    - health:
+        status: Healthy
+      kind: PersistentVolumeClaim
+      name: pimcore-sbx-nginx-php-data2
+      namespace: pimcore-sbx
+      status: Synced
+      version: v1
+    - health:
+        status: Healthy
+      kind: Service
+      name: pimcore-sbx-nginx-php
+      namespace: pimcore-sbx
+      status: Synced
+      version: v1
+    - group: apps
+      health:
+        message: >-
+          Waiting for rollout to finish: 0 of 1 updated replicas are
+          available...
+        status: Progressing
+      kind: Deployment
+      name: pimcore-sbx-nginx-php
+      namespace: pimcore-sbx
+      status: Synced
+      version: v1
+    - group: networking.k8s.io
+      health:
+        status: Healthy
+      kind: Ingress
+      name: pimcore-sbx-nginx-php
+      namespace: pimcore-sbx
+      status: Synced
+      version: v1
+  sourceType: Helm
+  summary:
+    externalURLs:
+      - https://pimcore-sbx.p.zacharie.org/
+    images:
+      - pimcore/pimcore:php8.2-latest
+      - trafex/php-nginx:3.4.0
+  sync:
+    comparedTo:
+      destination:
+        namespace: pimcore-sbx
+        server: https://kubernetes.default.svc
+      source:
+        chart: nginx-php
+        helm:
+          parameters:
+            - name: persistence.data.enabled
+              value: 'false'
+            - name: service.main.ports.http.port
+              value: '8080'
+          values: >-
+            #
+
+            # IMPORTANT NOTE
+
+            #
+
+            # This chart inherits from our common library chart. You can check
+            the default values/options here:
+
+            #
+            https://github.com/k8s-at-home/library-charts/tree/main/charts/stable/common/values.yaml
+
+            #
+
+
+            image:
+              # -- image repository
+              repository: trafex/php-nginx
+              # -- image tag
+              # @default -- chart.appVersion
+              tag: 3.4.0
+              # -- image pull policy
+              pullPolicy: IfNotPresent
+
+            # -- environment variables. See more environment variables in the
+            [nginx-php documentation](https://nginx-php.org/docs).
+
+            # @default -- See below
+
+            env:
+              # -- Set the container timezone
+              TZ: UTC
+
+            # -- Configures service settings for the chart.
+
+            # @default -- See values.yaml
+
+            service:
+              main:
+                ports:
+                  http:
+                    port: 8080
+
+            # -- Overwrites default config files for nginx or php/php-fpm if
+            enabled.
+
+            # @default -- See
+            https://github.com/TrafeX/docker-php-nginx/tree/master/config for
+            defaults
+
+            config:
+              nginx-server.conf: {}
+
+              php-settings.ini: {}
+
+              php-fpm-server.conf: {}
+
+            initContainers:
+              echo-container:
+                image: "pimcore/pimcore:php8.2-latest"
+                command: ['sh', '-c', 'echo Hello from init container! && sleep 500']
+                volumeMounts:
+                  - name: data2
+                    mountPath: /var/www/html
+            ingress:
+             main:
+              enabled: true
+              annotations: 
+                kubernetes.io/ingress.class: traefik
+              hosts:
+                - host: pimcore-sbx.p.zacharie.org
+                  paths:
+                    - path: /
+                      pathType: ImplementationSpecific
+              tls:
+                - hosts:
+                    - pimcore-sbx.p.zacharie.org
+                  secretName: wildcard-zacharie-org-certificate-secret
+
+            # -- Configure persistence settings for the chart under this key.
+
+            # @default -- See values.yaml
+
+
+            persistence:
+              data2:
+                enabled: true
+                mountPath: /var/www/html
+                size: 10Gi
+                accessMode: "ReadWriteOnce"
+
+            volumeClaimTemplates: []
+
+            # - name: data
+
+            #   mountPath: /data
+
+            #   accessMode: "ReadWriteOnce"
+
+            #   size: 1Gi
+
+            # - name: backup
+
+            #   mountPath: /backup
+
+            #   subPath: theSubPath
+
+            #   accessMode: "ReadWriteOnce"
+
+            #   size: 2Gi
+
+            #   storageClass: cheap-storage-class
+        repoURL: https://k8s-at-home.com/charts
+        targetRevision: 1.2.2
+    revision: 1.2.2
+    status: Synced
+spec:
+  destination:
+    namespace: pimcore-sbx
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: nginx-php
+    helm:
+      parameters:
+        - name: persistence.data.enabled
+          value: 'false'
+        - name: service.main.ports.http.port
+          value: '8080'
+      values: >-
+        #
+
+        # IMPORTANT NOTE
+
+        #
+
+        # This chart inherits from our common library chart. You can check the
+        default values/options here:
+
+        #
+        https://github.com/k8s-at-home/library-charts/tree/main/charts/stable/common/values.yaml
+
+        #
+
+
+        image:
+          # -- image repository
+          repository: trafex/php-nginx
+          # -- image tag
+          # @default -- chart.appVersion
+          tag: 3.4.0
+          # -- image pull policy
+          pullPolicy: IfNotPresent
+
+        # -- environment variables. See more environment variables in the
+        [nginx-php documentation](https://nginx-php.org/docs).
+
+        # @default -- See below
+
+        env:
+          # -- Set the container timezone
+          TZ: UTC
+
+        # -- Configures service settings for the chart.
+
+        # @default -- See values.yaml
+
+        service:
+          main:
+            ports:
+              http:
+                port: 8080
+
+        # -- Overwrites default config files for nginx or php/php-fpm if
+        enabled.
+
+        # @default -- See
+        https://github.com/TrafeX/docker-php-nginx/tree/master/config for
+        defaults
+
+        config:
+          nginx-server.conf: {}
+
+          php-settings.ini: {}
+
+          php-fpm-server.conf: {}
+
+        initContainers:
+          echo-container:
+            image: "pimcore/pimcore:php8.2-latest"
+            command: ['sh', '-c', 'echo Hello from init container! && sleep 500']
+            volumeMounts:
+              - name: data2
+                mountPath: /var/www/html
+        ingress:
+         main:
+          enabled: true
+          annotations: 
+            kubernetes.io/ingress.class: traefik
+          hosts:
+            - host: pimcore-sbx.p.zacharie.org
+              paths:
+                - path: /
+                  pathType: ImplementationSpecific
+          tls:
+            - hosts:
+                - pimcore-sbx.p.zacharie.org
+              secretName: wildcard-zacharie-org-certificate-secret
+
+        # -- Configure persistence settings for the chart under this key.
+
+        # @default -- See values.yaml
+
+
+        persistence:
+          data2:
+            enabled: true
+            mountPath: /var/www/html
+            size: 10Gi
+            accessMode: "ReadWriteOnce"
+
+        volumeClaimTemplates: []
+
+        # - name: data
+
+        #   mountPath: /data
+
+        #   accessMode: "ReadWriteOnce"
+
+        #   size: 1Gi
+
+        # - name: backup
+
+        #   mountPath: /backup
+
+        #   subPath: theSubPath
+
+        #   accessMode: "ReadWriteOnce"
+
+        #   size: 2Gi
+
+        #   storageClass: cheap-storage-class
+    repoURL: https://k8s-at-home.com/charts
+    targetRevision: 1.2.2
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
