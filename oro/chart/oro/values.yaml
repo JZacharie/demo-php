@@ -1,0 +1,477 @@
+application:
+  environment:
+    ORO_APP_DOMAIN: orocommerce.p.zacharie.org
+    ORO_APP_PROTOCOL: http
+    ORO_DB_DSN: postgres://orodbuser:orodbpass@db:5432/orodb?sslmode=disable&charset=utf8&serverVersion=15.1
+    ORO_DB_HOST: db
+    ORO_DB_NAME: orodb
+    ORO_DB_PASSWORD: orodbpass
+    ORO_DB_PORT: "5432"
+    ORO_DB_ROOT_PASSWORD: orodbpass
+    ORO_DB_ROOT_USER: orodbuser
+    ORO_DB_USER: orodbuser
+    ORO_DB_VERSION: "15.1"
+    ORO_ENV: prod
+    ORO_FORMATTING_CODE: en_US
+    ORO_IMAGE: oroinc/orocommerce-application
+    ORO_IMAGE_INIT: oroinc/orocommerce-application-init
+    ORO_IMAGE_TAG: 5.1.0
+    ORO_INSTALL_OPTIONS: ""
+    ORO_LANGUAGE: en
+    ORO_MAILER_DSN: smtp://mail:1025
+    ORO_MQ_DSN: 'dbal:'
+    ORO_NGINX_HOST: web
+    ORO_ORGANIZATION_NAME: ORO
+    ORO_PG_VER: 15.1-alpine
+    ORO_SAMPLE_DATA: "y"
+    ORO_SEARCH_ENGINE_DSN: orm:?prefix=oro_search
+    ORO_SESSION_DSN: 'native:'
+    ORO_USER_EMAIL: admin@example.com
+    ORO_USER_FIRSTNAME: John
+    ORO_USER_LASTNAME: Doe
+    ORO_USER_NAME: admin
+    ORO_USER_PASSWORD: admin
+    ORO_USER_RUNTIME: www-data
+    ORO_WEBSITE_SEARCH_ENGINE_DSN: orm:?prefix=oro_website_search
+    ORO_WEBSOCKET_BACKEND_DSN: tcp://ws:8080
+    ORO_WEBSOCKET_FRONTEND_DSN: //*:80/ws
+    ORO_WEBSOCKET_SERVER_DSN: //0.0.0.0:8080
+    POSTGRES_DB: orodb
+    POSTGRES_PASSWORD: orodbpass
+    POSTGRES_ROOT_PASSWORD: orodbpass
+    POSTGRES_USER: orodbuser
+  repository:
+    image: oroinc/orocommerce-application
+    tag: 5.1.0
+consumer:
+  environment:
+    ORO_APP_DOMAIN: orocommerce.p.zacharie.org
+    ORO_APP_PROTOCOL: http
+    ORO_DB_DSN: postgres://orodbuser:orodbpass@db:5432/orodb?sslmode=disable&charset=utf8&serverVersion=15.1
+    ORO_DB_HOST: db
+    ORO_DB_NAME: orodb
+    ORO_DB_PASSWORD: orodbpass
+    ORO_DB_PORT: "5432"
+    ORO_DB_ROOT_PASSWORD: orodbpass
+    ORO_DB_ROOT_USER: orodbuser
+    ORO_DB_USER: orodbuser
+    ORO_DB_VERSION: "15.1"
+    ORO_ENV: prod
+    ORO_FORMATTING_CODE: en_US
+    ORO_IMAGE: oroinc/orocommerce-application
+    ORO_IMAGE_INIT: oroinc/orocommerce-application-init
+    ORO_IMAGE_TAG: 5.1.0
+    ORO_INSTALL_OPTIONS: ""
+    ORO_LANGUAGE: en
+    ORO_MAILER_DSN: smtp://mail:1025
+    ORO_MQ_DSN: 'dbal:'
+    ORO_NGINX_HOST: web
+    ORO_ORGANIZATION_NAME: ORO
+    ORO_PG_VER: 15.1-alpine
+    ORO_SAMPLE_DATA: "y"
+    ORO_SEARCH_ENGINE_DSN: orm:?prefix=oro_search
+    ORO_SESSION_DSN: 'native:'
+    ORO_USER_EMAIL: admin@example.com
+    ORO_USER_FIRSTNAME: John
+    ORO_USER_LASTNAME: Doe
+    ORO_USER_NAME: admin
+    ORO_USER_PASSWORD: admin
+    ORO_USER_RUNTIME: www-data
+    ORO_WEBSITE_SEARCH_ENGINE_DSN: orm:?prefix=oro_website_search
+    ORO_WEBSOCKET_BACKEND_DSN: tcp://ws:8080
+    ORO_WEBSOCKET_FRONTEND_DSN: //*:80/ws
+    ORO_WEBSOCKET_SERVER_DSN: //0.0.0.0:8080
+    POSTGRES_DB: orodb
+    POSTGRES_PASSWORD: orodbpass
+    POSTGRES_ROOT_PASSWORD: orodbpass
+    POSTGRES_USER: orodbuser
+  persistence:
+    cache:
+      capacity: 1Gi
+      enabled: false
+    private_storage:
+      capacity: 1Gi
+      enabled: false
+    public_storage:
+      capacity: 1Gi
+      enabled: false
+  repository:
+    image: oroinc/orocommerce-application
+    tag: 5.1.0
+cron:
+  environment:
+    ORO_APP_DOMAIN: orocommerce.p.zacharie.org
+    ORO_APP_PROTOCOL: http
+    ORO_DB_DSN: postgres://orodbuser:orodbpass@db:5432/orodb?sslmode=disable&charset=utf8&serverVersion=15.1
+    ORO_DB_HOST: db
+    ORO_DB_NAME: orodb
+    ORO_DB_PASSWORD: orodbpass
+    ORO_DB_PORT: "5432"
+    ORO_DB_ROOT_PASSWORD: orodbpass
+    ORO_DB_ROOT_USER: orodbuser
+    ORO_DB_USER: orodbuser
+    ORO_DB_VERSION: "15.1"
+    ORO_ENV: prod
+    ORO_FORMATTING_CODE: en_US
+    ORO_IMAGE: oroinc/orocommerce-application
+    ORO_IMAGE_INIT: oroinc/orocommerce-application-init
+    ORO_IMAGE_TAG: 5.1.0
+    ORO_INSTALL_OPTIONS: ""
+    ORO_LANGUAGE: en
+    ORO_MAILER_DSN: smtp://mail:1025
+    ORO_MQ_DSN: 'dbal:'
+    ORO_NGINX_HOST: web
+    ORO_ORGANIZATION_NAME: ORO
+    ORO_PG_VER: 15.1-alpine
+    ORO_SAMPLE_DATA: "y"
+    ORO_SEARCH_ENGINE_DSN: orm:?prefix=oro_search
+    ORO_SESSION_DSN: 'native:'
+    ORO_USER_EMAIL: admin@example.com
+    ORO_USER_FIRSTNAME: John
+    ORO_USER_LASTNAME: Doe
+    ORO_USER_NAME: admin
+    ORO_USER_PASSWORD: admin
+    ORO_USER_RUNTIME: www-data
+    ORO_WEBSITE_SEARCH_ENGINE_DSN: orm:?prefix=oro_website_search
+    ORO_WEBSOCKET_BACKEND_DSN: tcp://ws:8080
+    ORO_WEBSOCKET_FRONTEND_DSN: //*:80/ws
+    ORO_WEBSOCKET_SERVER_DSN: //0.0.0.0:8080
+    POSTGRES_DB: orodb
+    POSTGRES_PASSWORD: orodbpass
+    POSTGRES_ROOT_PASSWORD: orodbpass
+    POSTGRES_USER: orodbuser
+  persistence:
+    cache:
+      capacity: 1Gi
+      enabled: false
+    private_storage:
+      capacity: 1Gi
+      enabled: false
+    public_storage:
+      capacity: 1Gi
+      enabled: false
+  repository:
+    image: oroinc/orocommerce-application
+    tag: 5.1.0
+db:
+  environment:
+    ORO_APP_DOMAIN: orocommerce.p.zacharie.org
+    ORO_APP_PROTOCOL: http
+    ORO_DB_DSN: postgres://orodbuser:orodbpass@db:5432/orodb?sslmode=disable&charset=utf8&serverVersion=15.1
+    ORO_DB_HOST: db
+    ORO_DB_NAME: orodb
+    ORO_DB_PASSWORD: orodbpass
+    ORO_DB_PORT: "5432"
+    ORO_DB_ROOT_PASSWORD: orodbpass
+    ORO_DB_ROOT_USER: orodbuser
+    ORO_DB_USER: orodbuser
+    ORO_DB_VERSION: "15.1"
+    ORO_ENV: prod
+    ORO_FORMATTING_CODE: en_US
+    ORO_IMAGE: oroinc/orocommerce-application
+    ORO_IMAGE_INIT: oroinc/orocommerce-application-init
+    ORO_IMAGE_TAG: 5.1.0
+    ORO_INSTALL_OPTIONS: ""
+    ORO_LANGUAGE: en
+    ORO_MAILER_DSN: smtp://mail:1025
+    ORO_MQ_DSN: 'dbal:'
+    ORO_NGINX_HOST: web
+    ORO_ORGANIZATION_NAME: ORO
+    ORO_PG_VER: 15.1-alpine
+    ORO_SAMPLE_DATA: "y"
+    ORO_SEARCH_ENGINE_DSN: orm:?prefix=oro_search
+    ORO_SESSION_DSN: 'native:'
+    ORO_USER_EMAIL: admin@example.com
+    ORO_USER_FIRSTNAME: John
+    ORO_USER_LASTNAME: Doe
+    ORO_USER_NAME: admin
+    ORO_USER_PASSWORD: admin
+    ORO_USER_RUNTIME: www-data
+    ORO_WEBSITE_SEARCH_ENGINE_DSN: orm:?prefix=oro_website_search
+    ORO_WEBSOCKET_BACKEND_DSN: tcp://ws:8080
+    ORO_WEBSOCKET_FRONTEND_DSN: //*:80/ws
+    ORO_WEBSOCKET_SERVER_DSN: //0.0.0.0:8080
+    POSTGRES_DB: orodb
+    POSTGRES_PASSWORD: orodbpass
+    POSTGRES_ROOT_PASSWORD: orodbpass
+    POSTGRES_USER: orodbuser
+  persistence:
+    db_data:
+      capacity: 1Gi
+      enabled: false
+  repository:
+    image: docker.io/oroinc/pgsql
+    tag: 15.1-alpine
+install:
+  environment:
+    ORO_APP_DOMAIN: orocommerce.p.zacharie.org
+    ORO_APP_PROTOCOL: http
+    ORO_DB_DSN: postgres://orodbuser:orodbpass@db:5432/orodb?sslmode=disable&charset=utf8&serverVersion=15.1
+    ORO_DB_HOST: db
+    ORO_DB_NAME: orodb
+    ORO_DB_PASSWORD: orodbpass
+    ORO_DB_PORT: "5432"
+    ORO_DB_ROOT_PASSWORD: orodbpass
+    ORO_DB_ROOT_USER: orodbuser
+    ORO_DB_USER: orodbuser
+    ORO_DB_VERSION: "15.1"
+    ORO_ENV: prod
+    ORO_FORMATTING_CODE: en_US
+    ORO_IMAGE: oroinc/orocommerce-application
+    ORO_IMAGE_INIT: oroinc/orocommerce-application-init
+    ORO_IMAGE_TAG: 5.1.0
+    ORO_INSTALL_OPTIONS: ""
+    ORO_LANGUAGE: en
+    ORO_MAILER_DSN: smtp://mail:1025
+    ORO_MQ_DSN: 'dbal:'
+    ORO_NGINX_HOST: web
+    ORO_ORGANIZATION_NAME: ORO
+    ORO_PG_VER: 15.1-alpine
+    ORO_SAMPLE_DATA: "y"
+    ORO_SEARCH_ENGINE_DSN: orm:?prefix=oro_search
+    ORO_SESSION_DSN: 'native:'
+    ORO_USER_EMAIL: admin@example.com
+    ORO_USER_FIRSTNAME: John
+    ORO_USER_LASTNAME: Doe
+    ORO_USER_NAME: admin
+    ORO_USER_PASSWORD: admin
+    ORO_USER_RUNTIME: www-data
+    ORO_WEBSITE_SEARCH_ENGINE_DSN: orm:?prefix=oro_website_search
+    ORO_WEBSOCKET_BACKEND_DSN: tcp://ws:8080
+    ORO_WEBSOCKET_FRONTEND_DSN: //*:80/ws
+    ORO_WEBSOCKET_SERVER_DSN: //0.0.0.0:8080
+    POSTGRES_DB: orodb
+    POSTGRES_PASSWORD: orodbpass
+    POSTGRES_ROOT_PASSWORD: orodbpass
+    POSTGRES_USER: orodbuser
+  persistence:
+    cache:
+      capacity: 1Gi
+      enabled: false
+    private_storage:
+      capacity: 1Gi
+      enabled: false
+    public_storage:
+      capacity: 1Gi
+      enabled: false
+  repository:
+    image: oroinc/orocommerce-application
+    tag: 5.1.0
+mail:
+  environment:
+    MH_MAILDIR_PATH: /home/mailhog/maildir
+    MH_STORAGE: maildir
+    MH_UI_WEB_PATH: mailcatcher
+  repository:
+    image: mailhog/mailhog
+    tag: ""
+php-fpm-app:
+  environment:
+    ORO_APP_DOMAIN: orocommerce.p.zacharie.org
+    ORO_APP_PROTOCOL: http
+    ORO_DB_DSN: postgres://orodbuser:orodbpass@db:5432/orodb?sslmode=disable&charset=utf8&serverVersion=15.1
+    ORO_DB_HOST: db
+    ORO_DB_NAME: orodb
+    ORO_DB_PASSWORD: orodbpass
+    ORO_DB_PORT: "5432"
+    ORO_DB_ROOT_PASSWORD: orodbpass
+    ORO_DB_ROOT_USER: orodbuser
+    ORO_DB_USER: orodbuser
+    ORO_DB_VERSION: "15.1"
+    ORO_ENV: prod
+    ORO_FORMATTING_CODE: en_US
+    ORO_IMAGE: oroinc/orocommerce-application
+    ORO_IMAGE_INIT: oroinc/orocommerce-application-init
+    ORO_IMAGE_TAG: 5.1.0
+    ORO_INSTALL_OPTIONS: ""
+    ORO_LANGUAGE: en
+    ORO_MAILER_DSN: smtp://mail:1025
+    ORO_MQ_DSN: 'dbal:'
+    ORO_NGINX_HOST: web
+    ORO_ORGANIZATION_NAME: ORO
+    ORO_PG_VER: 15.1-alpine
+    ORO_SAMPLE_DATA: "y"
+    ORO_SEARCH_ENGINE_DSN: orm:?prefix=oro_search
+    ORO_SESSION_DSN: 'native:'
+    ORO_USER_EMAIL: admin@example.com
+    ORO_USER_FIRSTNAME: John
+    ORO_USER_LASTNAME: Doe
+    ORO_USER_NAME: admin
+    ORO_USER_PASSWORD: admin
+    ORO_USER_RUNTIME: www-data
+    ORO_WEBSITE_SEARCH_ENGINE_DSN: orm:?prefix=oro_website_search
+    ORO_WEBSOCKET_BACKEND_DSN: tcp://ws:8080
+    ORO_WEBSOCKET_FRONTEND_DSN: //*:80/ws
+    ORO_WEBSOCKET_SERVER_DSN: //0.0.0.0:8080
+    POSTGRES_DB: orodb
+    POSTGRES_PASSWORD: orodbpass
+    POSTGRES_ROOT_PASSWORD: orodbpass
+    POSTGRES_USER: orodbuser
+  repository:
+    image: oroinc/orocommerce-application
+    tag: 5.1.0
+restore:
+  environment:
+    ORO_APP_DOMAIN: orocommerce.p.zacharie.org
+    ORO_APP_PROTOCOL: http
+    ORO_DB_DSN: postgres://orodbuser:orodbpass@db:5432/orodb?sslmode=disable&charset=utf8&serverVersion=15.1
+    ORO_DB_HOST: db
+    ORO_DB_NAME: orodb
+    ORO_DB_PASSWORD: orodbpass
+    ORO_DB_PORT: "5432"
+    ORO_DB_ROOT_PASSWORD: orodbpass
+    ORO_DB_ROOT_USER: orodbuser
+    ORO_DB_USER: orodbuser
+    ORO_DB_VERSION: "15.1"
+    ORO_ENV: prod
+    ORO_FORMATTING_CODE: en_US
+    ORO_IMAGE: oroinc/orocommerce-application
+    ORO_IMAGE_INIT: oroinc/orocommerce-application-init
+    ORO_IMAGE_TAG: 5.1.0
+    ORO_INSTALL_OPTIONS: ""
+    ORO_LANGUAGE: en
+    ORO_MAILER_DSN: smtp://mail:1025
+    ORO_MQ_DSN: 'dbal:'
+    ORO_NGINX_HOST: web
+    ORO_ORGANIZATION_NAME: ORO
+    ORO_PG_VER: 15.1-alpine
+    ORO_SAMPLE_DATA: "y"
+    ORO_SEARCH_ENGINE_DSN: orm:?prefix=oro_search
+    ORO_SESSION_DSN: 'native:'
+    ORO_USER_EMAIL: admin@example.com
+    ORO_USER_FIRSTNAME: John
+    ORO_USER_LASTNAME: Doe
+    ORO_USER_NAME: admin
+    ORO_USER_PASSWORD: admin
+    ORO_USER_RUNTIME: www-data
+    ORO_WEBSITE_SEARCH_ENGINE_DSN: orm:?prefix=oro_website_search
+    ORO_WEBSOCKET_BACKEND_DSN: tcp://ws:8080
+    ORO_WEBSOCKET_FRONTEND_DSN: //*:80/ws
+    ORO_WEBSOCKET_SERVER_DSN: //0.0.0.0:8080
+    POSTGRES_DB: orodb
+    POSTGRES_PASSWORD: orodbpass
+    POSTGRES_ROOT_PASSWORD: orodbpass
+    POSTGRES_USER: orodbuser
+  persistence:
+    cache:
+      capacity: 1Gi
+      enabled: false
+    private_storage:
+      capacity: 1Gi
+      enabled: false
+    public_storage:
+      capacity: 1Gi
+      enabled: false
+  repository:
+    image: oroinc/orocommerce-application-init
+    tag: 5.1.0
+web:
+  environment:
+    ORO_APP_DOMAIN: orocommerce.p.zacharie.org
+    ORO_APP_PROTOCOL: http
+    ORO_DB_DSN: postgres://orodbuser:orodbpass@db:5432/orodb?sslmode=disable&charset=utf8&serverVersion=15.1
+    ORO_DB_HOST: db
+    ORO_DB_NAME: orodb
+    ORO_DB_PASSWORD: orodbpass
+    ORO_DB_PORT: "5432"
+    ORO_DB_ROOT_PASSWORD: orodbpass
+    ORO_DB_ROOT_USER: orodbuser
+    ORO_DB_USER: orodbuser
+    ORO_DB_VERSION: "15.1"
+    ORO_ENV: prod
+    ORO_FORMATTING_CODE: en_US
+    ORO_IMAGE: oroinc/orocommerce-application
+    ORO_IMAGE_INIT: oroinc/orocommerce-application-init
+    ORO_IMAGE_TAG: 5.1.0
+    ORO_INSTALL_OPTIONS: ""
+    ORO_LANGUAGE: en
+    ORO_MAILER_DSN: smtp://mail:1025
+    ORO_MQ_DSN: 'dbal:'
+    ORO_NGINX_HOST: web
+    ORO_ORGANIZATION_NAME: ORO
+    ORO_PG_VER: 15.1-alpine
+    ORO_SAMPLE_DATA: "y"
+    ORO_SEARCH_ENGINE_DSN: orm:?prefix=oro_search
+    ORO_SESSION_DSN: 'native:'
+    ORO_USER_EMAIL: admin@example.com
+    ORO_USER_FIRSTNAME: John
+    ORO_USER_LASTNAME: Doe
+    ORO_USER_NAME: admin
+    ORO_USER_PASSWORD: admin
+    ORO_USER_RUNTIME: www-data
+    ORO_WEBSITE_SEARCH_ENGINE_DSN: orm:?prefix=oro_website_search
+    ORO_WEBSOCKET_BACKEND_DSN: tcp://ws:8080
+    ORO_WEBSOCKET_FRONTEND_DSN: //*:80/ws
+    ORO_WEBSOCKET_SERVER_DSN: //0.0.0.0:8080
+    POSTGRES_DB: orodb
+    POSTGRES_PASSWORD: orodbpass
+    POSTGRES_ROOT_PASSWORD: orodbpass
+    POSTGRES_USER: orodbuser
+  persistence:
+    cache:
+      capacity: 1Gi
+      enabled: false
+    private_storage:
+      capacity: 1Gi
+      enabled: false
+    public_storage:
+      capacity: 1Gi
+      enabled: false
+  repository:
+    image: oroinc/orocommerce-application
+    tag: 5.1.0
+ws:
+  environment:
+    ORO_APP_DOMAIN: orocommerce.p.zacharie.org
+    ORO_APP_PROTOCOL: http
+    ORO_DB_DSN: postgres://orodbuser:orodbpass@db:5432/orodb?sslmode=disable&charset=utf8&serverVersion=15.1
+    ORO_DB_HOST: db
+    ORO_DB_NAME: orodb
+    ORO_DB_PASSWORD: orodbpass
+    ORO_DB_PORT: "5432"
+    ORO_DB_ROOT_PASSWORD: orodbpass
+    ORO_DB_ROOT_USER: orodbuser
+    ORO_DB_USER: orodbuser
+    ORO_DB_VERSION: "15.1"
+    ORO_ENV: prod
+    ORO_FORMATTING_CODE: en_US
+    ORO_IMAGE: oroinc/orocommerce-application
+    ORO_IMAGE_INIT: oroinc/orocommerce-application-init
+    ORO_IMAGE_TAG: 5.1.0
+    ORO_INSTALL_OPTIONS: ""
+    ORO_LANGUAGE: en
+    ORO_MAILER_DSN: smtp://mail:1025
+    ORO_MQ_DSN: 'dbal:'
+    ORO_NGINX_HOST: web
+    ORO_ORGANIZATION_NAME: ORO
+    ORO_PG_VER: 15.1-alpine
+    ORO_SAMPLE_DATA: "y"
+    ORO_SEARCH_ENGINE_DSN: orm:?prefix=oro_search
+    ORO_SESSION_DSN: 'native:'
+    ORO_USER_EMAIL: admin@example.com
+    ORO_USER_FIRSTNAME: John
+    ORO_USER_LASTNAME: Doe
+    ORO_USER_NAME: admin
+    ORO_USER_PASSWORD: admin
+    ORO_USER_RUNTIME: www-data
+    ORO_WEBSITE_SEARCH_ENGINE_DSN: orm:?prefix=oro_website_search
+    ORO_WEBSOCKET_BACKEND_DSN: tcp://ws:8080
+    ORO_WEBSOCKET_FRONTEND_DSN: //*:80/ws
+    ORO_WEBSOCKET_SERVER_DSN: //0.0.0.0:8080
+    POSTGRES_DB: orodb
+    POSTGRES_PASSWORD: orodbpass
+    POSTGRES_ROOT_PASSWORD: orodbpass
+    POSTGRES_USER: orodbuser
+  persistence:
+    cache:
+      capacity: 1Gi
+      enabled: false
+    private_storage:
+      capacity: 1Gi
+      enabled: false
+    public_storage:
+      capacity: 1Gi
+      enabled: false
+  repository:
+    image: oroinc/orocommerce-application
+    tag: 5.1.0

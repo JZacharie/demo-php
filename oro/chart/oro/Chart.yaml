@@ -1,0 +1,8 @@
+# Create on 2023-11-13T07:54:05+01:00
+# Katenary command line: katenary convert -c docker-compose.yaml ./chart
+apiVersion: v2
+appVersion: 0.0.1
+description: A helm chart for oro
+name: oro
+type: application
+version: 0.1.0

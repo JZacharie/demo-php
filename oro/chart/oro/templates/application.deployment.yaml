@@ -1,0 +1,76 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: '{{ .Release.Name }}-application'
+  labels:
+    katenary.io/component: application
+    katenary.io/project: '{{ .Chart.Name }}'
+    katenary.io/release: '{{ .Release.Name }}'
+  annotations:
+    katenary.io/docker-compose-sha1: 26eb54535aff4cf701c2177e321811281ffb9a01
+    katenary.io/version: 2.0.0-beta2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      katenary.io/component: application
+      katenary.io/release: '{{ .Release.Name }}'
+  template:
+    metadata:
+      labels:
+        katenary.io/component: application
+        katenary.io/release: '{{ .Release.Name }}'
+    spec:
+      initContainers:
+        - name: check-web
+          image: busybox
+          command:
+            - sh
+            - -c
+            - |-
+              OK=0
+              echo "Checking web port"
+              while [ $OK != 1 ]; do
+                  echo -n "."
+                  nc -z {{ .Release.Name }}-web 80 2>&1 >/dev/null && OK=1 || sleep 1
+              done
+              echo
+              echo "Done"
+        - name: check-consumer
+          image: busybox
+          command:
+            - sh
+            - -c
+            - |-
+              OK=0
+              echo "Checking consumer port"
+              while [ $OK != 1 ]; do
+                  echo -n "."
+                  nc -z {{ .Release.Name }}-consumer 9002 2>&1 >/dev/null && OK=1 || sleep 1
+              done
+              echo
+              echo "Done"
+        - name: check-cron
+          image: busybox
+          command:
+            - sh
+            - -c
+            - |-
+              OK=0
+              echo "Checking cron port"
+              while [ $OK != 1 ]; do
+                  echo -n "."
+                  nc -z {{ .Release.Name }}-cron 1234 2>&1 >/dev/null && OK=1 || sleep 1
+              done
+              echo
+              echo "Done"
+      containers:
+        - name: application
+          image: '{{ .Values.application.repository.image }}{{ if ne .Values.application.repository.tag "" }}:{{ .Values.application.repository.tag }}{{ end }}'
+          envFrom:
+            - configMapRef:
+                name: '{{ .Release.Name }}-application'
+          command:
+            - --
+            - "true"
+

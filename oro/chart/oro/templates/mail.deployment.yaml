@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: '{{ .Release.Name }}-mail'
+  labels:
+    katenary.io/component: mail
+    katenary.io/project: '{{ .Chart.Name }}'
+    katenary.io/release: '{{ .Release.Name }}'
+  annotations:
+    katenary.io/docker-compose-sha1: 26eb54535aff4cf701c2177e321811281ffb9a01
+    katenary.io/version: 2.0.0-beta2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      katenary.io/component: mail
+      katenary.io/release: '{{ .Release.Name }}'
+  template:
+    metadata:
+      labels:
+        katenary.io/component: mail
+        katenary.io/release: '{{ .Release.Name }}'
+    spec:
+      containers:
+        - name: mail
+          image: '{{ .Values.mail.repository.image }}{{ if ne .Values.mail.repository.tag "" }}:{{ .Values.mail.repository.tag }}{{ end }}'
+          ports:
+            - name: mail
+              containerPort: 1025
+          env:
+            - name: MH_MAILDIR_PATH
+              value: '{{ tpl .Values.mail.environment.MH_MAILDIR_PATH . }}'
+            - name: MH_UI_WEB_PATH
+              value: '{{ tpl .Values.mail.environment.MH_UI_WEB_PATH . }}'
+            - name: MH_STORAGE
+              value: '{{ tpl .Values.mail.environment.MH_STORAGE . }}'
+

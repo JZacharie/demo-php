@@ -1,0 +1,1229 @@
+---
+# Source: oro/templates/application-configmaptest-env.configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: 'oro-application'
+  labels:
+    katenary.io/component: application
+    katenary.io/path: test.env
+    katenary.io/project: 'oro'
+    katenary.io/release: 'oro'
+  annotations:
+    katenary.io/docker-compose-sha1: 26eb54535aff4cf701c2177e321811281ffb9a01
+    katenary.io/version: 2.0.0-beta2
+data:
+  ORO_APP_DOMAIN: orocommerce.p.zacharie.org
+  ORO_APP_PROTOCOL: http
+  ORO_DB_DSN: '"postgres://orodbuser:orodbpass@db:5432/orodb?sslmode=disable&charset=utf8&serverVersion=15.1"'
+  ORO_DB_HOST: db
+  ORO_DB_NAME: orodb
+  ORO_DB_PASSWORD: orodbpass
+  ORO_DB_PORT: "5432"
+  ORO_DB_ROOT_PASSWORD: orodbpass
+  ORO_DB_ROOT_USER: orodbuser
+  ORO_DB_USER: orodbuser
+  ORO_DB_VERSION: "15.1"
+  ORO_ENV: prod
+  ORO_FORMATTING_CODE: en_US
+  ORO_IMAGE: oroinc/orocommerce-application
+  ORO_IMAGE_INIT: oroinc/orocommerce-application-init
+  ORO_IMAGE_TAG: 5.1.0
+  ORO_INSTALL_OPTIONS: ""
+  ORO_LANGUAGE: en
+  ORO_MAILER_DSN: smtp://mail:1025
+  ORO_MQ_DSN: 'dbal:'
+  ORO_NGINX_HOST: web
+  ORO_ORGANIZATION_NAME: ORO
+  ORO_PG_VER: 15.1-alpine
+  ORO_SAMPLE_DATA: "y"
+  ORO_SEARCH_ENGINE_DSN: orm:?prefix=oro_search
+  ORO_SESSION_DSN: 'native:'
+  ORO_USER_EMAIL: admin@example.com
+  ORO_USER_FIRSTNAME: John
+  ORO_USER_LASTNAME: Doe
+  ORO_USER_NAME: admin
+  ORO_USER_PASSWORD: admin
+  ORO_USER_RUNTIME: www-data
+  ORO_WEBSITE_SEARCH_ENGINE_DSN: orm:?prefix=oro_website_search
+  ORO_WEBSOCKET_BACKEND_DSN: tcp://ws:8080
+  ORO_WEBSOCKET_FRONTEND_DSN: //*:80/ws
+  ORO_WEBSOCKET_SERVER_DSN: //0.0.0.0:8080
+  POSTGRES_DB: orodb
+  POSTGRES_PASSWORD: orodbpass
+  POSTGRES_ROOT_PASSWORD: orodbpass
+  POSTGRES_USER: orodbuser
+---
+# Source: oro/templates/consumer-configmaptest-env.configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: 'oro-consumer'
+  labels:
+    katenary.io/component: consumer
+    katenary.io/path: test.env
+    katenary.io/project: 'oro'
+    katenary.io/release: 'oro'
+  annotations:
+    katenary.io/docker-compose-sha1: 26eb54535aff4cf701c2177e321811281ffb9a01
+    katenary.io/version: 2.0.0-beta2
+data:
+  ORO_APP_DOMAIN: orocommerce.p.zacharie.org
+  ORO_APP_PROTOCOL: http
+  ORO_DB_DSN: '"postgres://orodbuser:orodbpass@db:5432/orodb?sslmode=disable&charset=utf8&serverVersion=15.1"'
+  ORO_DB_HOST: db
+  ORO_DB_NAME: orodb
+  ORO_DB_PASSWORD: orodbpass
+  ORO_DB_PORT: "5432"
+  ORO_DB_ROOT_PASSWORD: orodbpass
+  ORO_DB_ROOT_USER: orodbuser
+  ORO_DB_USER: orodbuser
+  ORO_DB_VERSION: "15.1"
+  ORO_ENV: prod
+  ORO_FORMATTING_CODE: en_US
+  ORO_IMAGE: oroinc/orocommerce-application
+  ORO_IMAGE_INIT: oroinc/orocommerce-application-init
+  ORO_IMAGE_TAG: 5.1.0
+  ORO_INSTALL_OPTIONS: ""
+  ORO_LANGUAGE: en
+  ORO_MAILER_DSN: smtp://mail:1025
+  ORO_MQ_DSN: 'dbal:'
+  ORO_NGINX_HOST: web
+  ORO_ORGANIZATION_NAME: ORO
+  ORO_PG_VER: 15.1-alpine
+  ORO_SAMPLE_DATA: "y"
+  ORO_SEARCH_ENGINE_DSN: orm:?prefix=oro_search
+  ORO_SESSION_DSN: 'native:'
+  ORO_USER_EMAIL: admin@example.com
+  ORO_USER_FIRSTNAME: John
+  ORO_USER_LASTNAME: Doe
+  ORO_USER_NAME: admin
+  ORO_USER_PASSWORD: admin
+  ORO_USER_RUNTIME: www-data
+  ORO_WEBSITE_SEARCH_ENGINE_DSN: orm:?prefix=oro_website_search
+  ORO_WEBSOCKET_BACKEND_DSN: tcp://ws:8080
+  ORO_WEBSOCKET_FRONTEND_DSN: //*:80/ws
+  ORO_WEBSOCKET_SERVER_DSN: //0.0.0.0:8080
+  POSTGRES_DB: orodb
+  POSTGRES_PASSWORD: orodbpass
+  POSTGRES_ROOT_PASSWORD: orodbpass
+  POSTGRES_USER: orodbuser
+---
+# Source: oro/templates/cron-configmaptest-env.configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: 'oro-cron'
+  labels:
+    katenary.io/component: cron
+    katenary.io/path: test.env
+    katenary.io/project: 'oro'
+    katenary.io/release: 'oro'
+  annotations:
+    katenary.io/docker-compose-sha1: 26eb54535aff4cf701c2177e321811281ffb9a01
+    katenary.io/version: 2.0.0-beta2
+data:
+  ORO_APP_DOMAIN: orocommerce.p.zacharie.org
+  ORO_APP_PROTOCOL: http
+  ORO_DB_DSN: '"postgres://orodbuser:orodbpass@db:5432/orodb?sslmode=disable&charset=utf8&serverVersion=15.1"'
+  ORO_DB_HOST: db
+  ORO_DB_NAME: orodb
+  ORO_DB_PASSWORD: orodbpass
+  ORO_DB_PORT: "5432"
+  ORO_DB_ROOT_PASSWORD: orodbpass
+  ORO_DB_ROOT_USER: orodbuser
+  ORO_DB_USER: orodbuser
+  ORO_DB_VERSION: "15.1"
+  ORO_ENV: prod
+  ORO_FORMATTING_CODE: en_US
+  ORO_IMAGE: oroinc/orocommerce-application
+  ORO_IMAGE_INIT: oroinc/orocommerce-application-init
+  ORO_IMAGE_TAG: 5.1.0
+  ORO_INSTALL_OPTIONS: ""
+  ORO_LANGUAGE: en
+  ORO_MAILER_DSN: smtp://mail:1025
+  ORO_MQ_DSN: 'dbal:'
+  ORO_NGINX_HOST: web
+  ORO_ORGANIZATION_NAME: ORO
+  ORO_PG_VER: 15.1-alpine
+  ORO_SAMPLE_DATA: "y"
+  ORO_SEARCH_ENGINE_DSN: orm:?prefix=oro_search
+  ORO_SESSION_DSN: 'native:'
+  ORO_USER_EMAIL: admin@example.com
+  ORO_USER_FIRSTNAME: John
+  ORO_USER_LASTNAME: Doe
+  ORO_USER_NAME: admin
+  ORO_USER_PASSWORD: admin
+  ORO_USER_RUNTIME: www-data
+  ORO_WEBSITE_SEARCH_ENGINE_DSN: orm:?prefix=oro_website_search
+  ORO_WEBSOCKET_BACKEND_DSN: tcp://ws:8080
+  ORO_WEBSOCKET_FRONTEND_DSN: //*:80/ws
+  ORO_WEBSOCKET_SERVER_DSN: //0.0.0.0:8080
+  POSTGRES_DB: orodb
+  POSTGRES_PASSWORD: orodbpass
+  POSTGRES_ROOT_PASSWORD: orodbpass
+  POSTGRES_USER: orodbuser
+---
+# Source: oro/templates/db-configmaptest-env.configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: 'oro-db'
+  labels:
+    katenary.io/component: db
+    katenary.io/path: test.env
+    katenary.io/project: 'oro'
+    katenary.io/release: 'oro'
+  annotations:
+    katenary.io/docker-compose-sha1: 26eb54535aff4cf701c2177e321811281ffb9a01
+    katenary.io/version: 2.0.0-beta2
+data:
+  ORO_APP_DOMAIN: orocommerce.p.zacharie.org
+  ORO_APP_PROTOCOL: http
+  ORO_DB_DSN: '"postgres://orodbuser:orodbpass@db:5432/orodb?sslmode=disable&charset=utf8&serverVersion=15.1"'
+  ORO_DB_HOST: db
+  ORO_DB_NAME: orodb
+  ORO_DB_PASSWORD: orodbpass
+  ORO_DB_PORT: "5432"
+  ORO_DB_ROOT_PASSWORD: orodbpass
+  ORO_DB_ROOT_USER: orodbuser
+  ORO_DB_USER: orodbuser
+  ORO_DB_VERSION: "15.1"
+  ORO_ENV: prod
+  ORO_FORMATTING_CODE: en_US
+  ORO_IMAGE: oroinc/orocommerce-application
+  ORO_IMAGE_INIT: oroinc/orocommerce-application-init
+  ORO_IMAGE_TAG: 5.1.0
+  ORO_INSTALL_OPTIONS: ""
+  ORO_LANGUAGE: en
+  ORO_MAILER_DSN: smtp://mail:1025
+  ORO_MQ_DSN: 'dbal:'
+  ORO_NGINX_HOST: web
+  ORO_ORGANIZATION_NAME: ORO
+  ORO_PG_VER: 15.1-alpine
+  ORO_SAMPLE_DATA: "y"
+  ORO_SEARCH_ENGINE_DSN: orm:?prefix=oro_search
+  ORO_SESSION_DSN: 'native:'
+  ORO_USER_EMAIL: admin@example.com
+  ORO_USER_FIRSTNAME: John
+  ORO_USER_LASTNAME: Doe
+  ORO_USER_NAME: admin
+  ORO_USER_PASSWORD: admin
+  ORO_USER_RUNTIME: www-data
+  ORO_WEBSITE_SEARCH_ENGINE_DSN: orm:?prefix=oro_website_search
+  ORO_WEBSOCKET_BACKEND_DSN: tcp://ws:8080
+  ORO_WEBSOCKET_FRONTEND_DSN: //*:80/ws
+  ORO_WEBSOCKET_SERVER_DSN: //0.0.0.0:8080
+  POSTGRES_DB: orodb
+  POSTGRES_PASSWORD: orodbpass
+  POSTGRES_ROOT_PASSWORD: orodbpass
+  POSTGRES_USER: orodbuser
+---
+# Source: oro/templates/install-configmaptest-env.configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: 'oro-install'
+  labels:
+    katenary.io/component: install
+    katenary.io/path: test.env
+    katenary.io/project: 'oro'
+    katenary.io/release: 'oro'
+  annotations:
+    katenary.io/docker-compose-sha1: 26eb54535aff4cf701c2177e321811281ffb9a01
+    katenary.io/version: 2.0.0-beta2
+data:
+  ORO_APP_DOMAIN: orocommerce.p.zacharie.org
+  ORO_APP_PROTOCOL: http
+  ORO_DB_DSN: '"postgres://orodbuser:orodbpass@db:5432/orodb?sslmode=disable&charset=utf8&serverVersion=15.1"'
+  ORO_DB_HOST: db
+  ORO_DB_NAME: orodb
+  ORO_DB_PASSWORD: orodbpass
+  ORO_DB_PORT: "5432"
+  ORO_DB_ROOT_PASSWORD: orodbpass
+  ORO_DB_ROOT_USER: orodbuser
+  ORO_DB_USER: orodbuser
+  ORO_DB_VERSION: "15.1"
+  ORO_ENV: prod
+  ORO_FORMATTING_CODE: en_US
+  ORO_IMAGE: oroinc/orocommerce-application
+  ORO_IMAGE_INIT: oroinc/orocommerce-application-init
+  ORO_IMAGE_TAG: 5.1.0
+  ORO_INSTALL_OPTIONS: ""
+  ORO_LANGUAGE: en
+  ORO_MAILER_DSN: smtp://mail:1025
+  ORO_MQ_DSN: 'dbal:'
+  ORO_NGINX_HOST: web
+  ORO_ORGANIZATION_NAME: ORO
+  ORO_PG_VER: 15.1-alpine
+  ORO_SAMPLE_DATA: "y"
+  ORO_SEARCH_ENGINE_DSN: orm:?prefix=oro_search
+  ORO_SESSION_DSN: 'native:'
+  ORO_USER_EMAIL: admin@example.com
+  ORO_USER_FIRSTNAME: John
+  ORO_USER_LASTNAME: Doe
+  ORO_USER_NAME: admin
+  ORO_USER_PASSWORD: admin
+  ORO_USER_RUNTIME: www-data
+  ORO_WEBSITE_SEARCH_ENGINE_DSN: orm:?prefix=oro_website_search
+  ORO_WEBSOCKET_BACKEND_DSN: tcp://ws:8080
+  ORO_WEBSOCKET_FRONTEND_DSN: //*:80/ws
+  ORO_WEBSOCKET_SERVER_DSN: //0.0.0.0:8080
+  POSTGRES_DB: orodb
+  POSTGRES_PASSWORD: orodbpass
+  POSTGRES_ROOT_PASSWORD: orodbpass
+  POSTGRES_USER: orodbuser
+---
+# Source: oro/templates/restore-configmaptest-env.configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: 'oro-restore'
+  labels:
+    katenary.io/component: restore
+    katenary.io/path: test.env
+    katenary.io/project: 'oro'
+    katenary.io/release: 'oro'
+  annotations:
+    katenary.io/docker-compose-sha1: 26eb54535aff4cf701c2177e321811281ffb9a01
+    katenary.io/version: 2.0.0-beta2
+data:
+  ORO_APP_DOMAIN: orocommerce.p.zacharie.org
+  ORO_APP_PROTOCOL: http
+  ORO_DB_DSN: '"postgres://orodbuser:orodbpass@db:5432/orodb?sslmode=disable&charset=utf8&serverVersion=15.1"'
+  ORO_DB_HOST: db
+  ORO_DB_NAME: orodb
+  ORO_DB_PASSWORD: orodbpass
+  ORO_DB_PORT: "5432"
+  ORO_DB_ROOT_PASSWORD: orodbpass
+  ORO_DB_ROOT_USER: orodbuser
+  ORO_DB_USER: orodbuser
+  ORO_DB_VERSION: "15.1"
+  ORO_ENV: prod
+  ORO_FORMATTING_CODE: en_US
+  ORO_IMAGE: oroinc/orocommerce-application
+  ORO_IMAGE_INIT: oroinc/orocommerce-application-init
+  ORO_IMAGE_TAG: 5.1.0
+  ORO_INSTALL_OPTIONS: ""
+  ORO_LANGUAGE: en
+  ORO_MAILER_DSN: smtp://mail:1025
+  ORO_MQ_DSN: 'dbal:'
+  ORO_NGINX_HOST: web
+  ORO_ORGANIZATION_NAME: ORO
+  ORO_PG_VER: 15.1-alpine
+  ORO_SAMPLE_DATA: "y"
+  ORO_SEARCH_ENGINE_DSN: orm:?prefix=oro_search
+  ORO_SESSION_DSN: 'native:'
+  ORO_USER_EMAIL: admin@example.com
+  ORO_USER_FIRSTNAME: John
+  ORO_USER_LASTNAME: Doe
+  ORO_USER_NAME: admin
+  ORO_USER_PASSWORD: admin
+  ORO_USER_RUNTIME: www-data
+  ORO_WEBSITE_SEARCH_ENGINE_DSN: orm:?prefix=oro_website_search
+  ORO_WEBSOCKET_BACKEND_DSN: tcp://ws:8080
+  ORO_WEBSOCKET_FRONTEND_DSN: //*:80/ws
+  ORO_WEBSOCKET_SERVER_DSN: //0.0.0.0:8080
+  POSTGRES_DB: orodb
+  POSTGRES_PASSWORD: orodbpass
+  POSTGRES_ROOT_PASSWORD: orodbpass
+  POSTGRES_USER: orodbuser
+---
+# Source: oro/templates/web-configmaptest-env.configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: 'oro-web'
+  labels:
+    katenary.io/component: web
+    katenary.io/path: test.env
+    katenary.io/project: 'oro'
+    katenary.io/release: 'oro'
+  annotations:
+    katenary.io/docker-compose-sha1: 26eb54535aff4cf701c2177e321811281ffb9a01
+    katenary.io/version: 2.0.0-beta2
+data:
+  ORO_APP_DOMAIN: orocommerce.p.zacharie.org
+  ORO_APP_PROTOCOL: http
+  ORO_DB_DSN: '"postgres://orodbuser:orodbpass@db:5432/orodb?sslmode=disable&charset=utf8&serverVersion=15.1"'
+  ORO_DB_HOST: db
+  ORO_DB_NAME: orodb
+  ORO_DB_PASSWORD: orodbpass
+  ORO_DB_PORT: "5432"
+  ORO_DB_ROOT_PASSWORD: orodbpass
+  ORO_DB_ROOT_USER: orodbuser
+  ORO_DB_USER: orodbuser
+  ORO_DB_VERSION: "15.1"
+  ORO_ENV: prod
+  ORO_FORMATTING_CODE: en_US
+  ORO_IMAGE: oroinc/orocommerce-application
+  ORO_IMAGE_INIT: oroinc/orocommerce-application-init
+  ORO_IMAGE_TAG: 5.1.0
+  ORO_INSTALL_OPTIONS: ""
+  ORO_LANGUAGE: en
+  ORO_MAILER_DSN: smtp://mail:1025
+  ORO_MQ_DSN: 'dbal:'
+  ORO_NGINX_HOST: web
+  ORO_ORGANIZATION_NAME: ORO
+  ORO_PG_VER: 15.1-alpine
+  ORO_SAMPLE_DATA: "y"
+  ORO_SEARCH_ENGINE_DSN: orm:?prefix=oro_search
+  ORO_SESSION_DSN: 'native:'
+  ORO_USER_EMAIL: admin@example.com
+  ORO_USER_FIRSTNAME: John
+  ORO_USER_LASTNAME: Doe
+  ORO_USER_NAME: admin
+  ORO_USER_PASSWORD: admin
+  ORO_USER_RUNTIME: www-data
+  ORO_WEBSITE_SEARCH_ENGINE_DSN: orm:?prefix=oro_website_search
+  ORO_WEBSOCKET_BACKEND_DSN: tcp://ws:8080
+  ORO_WEBSOCKET_FRONTEND_DSN: //*:80/ws
+  ORO_WEBSOCKET_SERVER_DSN: //0.0.0.0:8080
+  POSTGRES_DB: orodb
+  POSTGRES_PASSWORD: orodbpass
+  POSTGRES_ROOT_PASSWORD: orodbpass
+  POSTGRES_USER: orodbuser
+---
+# Source: oro/templates/ws-configmaptest-env.configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: 'oro-ws'
+  labels:
+    katenary.io/component: ws
+    katenary.io/path: test.env
+    katenary.io/project: 'oro'
+    katenary.io/release: 'oro'
+  annotations:
+    katenary.io/docker-compose-sha1: 26eb54535aff4cf701c2177e321811281ffb9a01
+    katenary.io/version: 2.0.0-beta2
+data:
+  ORO_APP_DOMAIN: orocommerce.p.zacharie.org
+  ORO_APP_PROTOCOL: http
+  ORO_DB_DSN: '"postgres://orodbuser:orodbpass@db:5432/orodb?sslmode=disable&charset=utf8&serverVersion=15.1"'
+  ORO_DB_HOST: db
+  ORO_DB_NAME: orodb
+  ORO_DB_PASSWORD: orodbpass
+  ORO_DB_PORT: "5432"
+  ORO_DB_ROOT_PASSWORD: orodbpass
+  ORO_DB_ROOT_USER: orodbuser
+  ORO_DB_USER: orodbuser
+  ORO_DB_VERSION: "15.1"
+  ORO_ENV: prod
+  ORO_FORMATTING_CODE: en_US
+  ORO_IMAGE: oroinc/orocommerce-application
+  ORO_IMAGE_INIT: oroinc/orocommerce-application-init
+  ORO_IMAGE_TAG: 5.1.0
+  ORO_INSTALL_OPTIONS: ""
+  ORO_LANGUAGE: en
+  ORO_MAILER_DSN: smtp://mail:1025
+  ORO_MQ_DSN: 'dbal:'
+  ORO_NGINX_HOST: web
+  ORO_ORGANIZATION_NAME: ORO
+  ORO_PG_VER: 15.1-alpine
+  ORO_SAMPLE_DATA: "y"
+  ORO_SEARCH_ENGINE_DSN: orm:?prefix=oro_search
+  ORO_SESSION_DSN: 'native:'
+  ORO_USER_EMAIL: admin@example.com
+  ORO_USER_FIRSTNAME: John
+  ORO_USER_LASTNAME: Doe
+  ORO_USER_NAME: admin
+  ORO_USER_PASSWORD: admin
+  ORO_USER_RUNTIME: www-data
+  ORO_WEBSITE_SEARCH_ENGINE_DSN: orm:?prefix=oro_website_search
+  ORO_WEBSOCKET_BACKEND_DSN: tcp://ws:8080
+  ORO_WEBSOCKET_FRONTEND_DSN: //*:80/ws
+  ORO_WEBSOCKET_SERVER_DSN: //0.0.0.0:8080
+  POSTGRES_DB: orodb
+  POSTGRES_PASSWORD: orodbpass
+  POSTGRES_ROOT_PASSWORD: orodbpass
+  POSTGRES_USER: orodbuser
+---
+# Source: oro/templates/consumer.service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: 'oro-consumer'
+  labels:
+    katenary.io/component: consumer
+    katenary.io/project: 'oro'
+    katenary.io/release: 'oro'
+  annotations:
+    katenary.io/docker-compose-sha1: 26eb54535aff4cf701c2177e321811281ffb9a01
+    katenary.io/version: 2.0.0-beta2
+spec:
+  selector:
+    katenary.io/component: consumer
+    katenary.io/release: 'oro'
+  ports:
+    - protocol: TCP
+      port: 9002
+      targetPort: 9002
+---
+# Source: oro/templates/cron.service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: 'oro-cron'
+  labels:
+    katenary.io/component: cron
+    katenary.io/project: 'oro'
+    katenary.io/release: 'oro'
+  annotations:
+    katenary.io/docker-compose-sha1: 26eb54535aff4cf701c2177e321811281ffb9a01
+    katenary.io/version: 2.0.0-beta2
+spec:
+  selector:
+    katenary.io/component: cron
+    katenary.io/release: 'oro'
+  ports:
+    - protocol: TCP
+      port: 1234
+      targetPort: 1234
+---
+# Source: oro/templates/db.service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: 'oro-db'
+  labels:
+    katenary.io/component: db
+    katenary.io/project: 'oro'
+    katenary.io/release: 'oro'
+  annotations:
+    katenary.io/docker-compose-sha1: 26eb54535aff4cf701c2177e321811281ffb9a01
+    katenary.io/version: 2.0.0-beta2
+spec:
+  selector:
+    katenary.io/component: db
+    katenary.io/release: 'oro'
+  ports:
+    - protocol: TCP
+      port: 5432
+      targetPort: 5432
+---
+# Source: oro/templates/mail.service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: 'oro-mail'
+  labels:
+    katenary.io/component: mail
+    katenary.io/project: 'oro'
+    katenary.io/release: 'oro'
+  annotations:
+    katenary.io/docker-compose-sha1: 26eb54535aff4cf701c2177e321811281ffb9a01
+    katenary.io/version: 2.0.0-beta2
+spec:
+  selector:
+    katenary.io/component: mail
+    katenary.io/release: 'oro'
+  ports:
+    - protocol: TCP
+      port: 1025
+      targetPort: 1025
+---
+# Source: oro/templates/web.service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: 'oro-web'
+  labels:
+    katenary.io/component: web
+    katenary.io/project: 'oro'
+    katenary.io/release: 'oro'
+  annotations:
+    katenary.io/docker-compose-sha1: 26eb54535aff4cf701c2177e321811281ffb9a01
+    katenary.io/version: 2.0.0-beta2
+spec:
+  selector:
+    katenary.io/component: web
+    katenary.io/release: 'oro'
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+---
+# Source: oro/templates/ws.service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: 'oro-ws'
+  labels:
+    katenary.io/component: ws
+    katenary.io/project: 'oro'
+    katenary.io/release: 'oro'
+  annotations:
+    katenary.io/docker-compose-sha1: 26eb54535aff4cf701c2177e321811281ffb9a01
+    katenary.io/version: 2.0.0-beta2
+spec:
+  selector:
+    katenary.io/component: ws
+    katenary.io/release: 'oro'
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+    - protocol: TCP
+      port: 9000
+      targetPort: 9000
+---
+# Source: oro/templates/application.deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: 'oro-application'
+  labels:
+    katenary.io/component: application
+    katenary.io/project: 'oro'
+    katenary.io/release: 'oro'
+  annotations:
+    katenary.io/docker-compose-sha1: 26eb54535aff4cf701c2177e321811281ffb9a01
+    katenary.io/version: 2.0.0-beta2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      katenary.io/component: application
+      katenary.io/release: 'oro'
+  template:
+    metadata:
+      labels:
+        katenary.io/component: application
+        katenary.io/release: 'oro'
+    spec:
+      initContainers:
+        - name: check-web
+          image: busybox
+          command:
+            - sh
+            - -c
+            - |-
+              OK=0
+              echo "Checking web port"
+              while [ $OK != 1 ]; do
+                  echo -n "."
+                  nc -z oro-web 80 2>&1 >/dev/null && OK=1 || sleep 1
+              done
+              echo
+              echo "Done"
+        - name: check-consumer
+          image: busybox
+          command:
+            - sh
+            - -c
+            - |-
+              OK=0
+              echo "Checking consumer port"
+              while [ $OK != 1 ]; do
+                  echo -n "."
+                  nc -z oro-consumer 9002 2>&1 >/dev/null && OK=1 || sleep 1
+              done
+              echo
+              echo "Done"
+        - name: check-cron
+          image: busybox
+          command:
+            - sh
+            - -c
+            - |-
+              OK=0
+              echo "Checking cron port"
+              while [ $OK != 1 ]; do
+                  echo -n "."
+                  nc -z oro-cron 1234 2>&1 >/dev/null && OK=1 || sleep 1
+              done
+              echo
+              echo "Done"
+      containers:
+        - name: application
+          image: 'oroinc/orocommerce-application:5.1.0'
+          envFrom:
+            - configMapRef:
+                name: 'oro-application'
+          command:
+            - --
+            - "true"
+---
+# Source: oro/templates/consumer.deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: 'oro-consumer'
+  labels:
+    katenary.io/component: consumer
+    katenary.io/project: 'oro'
+    katenary.io/release: 'oro'
+  annotations:
+    katenary.io/docker-compose-sha1: 26eb54535aff4cf701c2177e321811281ffb9a01
+    katenary.io/version: 2.0.0-beta2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      katenary.io/component: consumer
+      katenary.io/release: 'oro'
+  template:
+    metadata:
+      labels:
+        katenary.io/component: consumer
+        katenary.io/release: 'oro'
+    spec:
+      initContainers:
+        - name: check-php-fpm-app
+          image: busybox
+          command:
+            - sh
+            - -c
+            - |-
+              OK=0
+              echo "Checking php-fpm-app port"
+              while [ $OK != 1 ]; do
+                  echo -n "."
+                  nc -z oro-php-fpm-app 9000 2>&1 >/dev/null && OK=1 || sleep 1
+              done
+              echo
+              echo "Done"
+      containers:
+        - name: consumer
+          image: 'oroinc/orocommerce-application:5.1.0'
+          ports:
+            - name: consumer
+              containerPort: 9002
+          envFrom:
+            - configMapRef:
+                name: 'oro-consumer'
+          command:
+            - console
+            - oro:message-queue:consume
+            - --memory-limit=500
+            - -v
+          volumeMounts:
+            - mountPath: /var/www/oro/var/cache
+              name: cache
+            - mountPath: /var/www/oro/public/media
+              name: public_storage
+            - mountPath: /var/www/oro/var/data
+              name: private_storage
+      volumes:
+        - name: cache
+          emptyDir: {}
+        - name: public_storage
+          emptyDir: {}
+        - name: private_storage
+          emptyDir: {}
+---
+# Source: oro/templates/cron.deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: 'oro-cron'
+  labels:
+    katenary.io/component: cron
+    katenary.io/project: 'oro'
+    katenary.io/release: 'oro'
+  annotations:
+    katenary.io/docker-compose-sha1: 26eb54535aff4cf701c2177e321811281ffb9a01
+    katenary.io/version: 2.0.0-beta2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      katenary.io/component: cron
+      katenary.io/release: 'oro'
+  template:
+    metadata:
+      labels:
+        katenary.io/component: cron
+        katenary.io/release: 'oro'
+    spec:
+      initContainers:
+        - name: check-php-fpm-app
+          image: busybox
+          command:
+            - sh
+            - -c
+            - |-
+              OK=0
+              echo "Checking php-fpm-app port"
+              while [ $OK != 1 ]; do
+                  echo -n "."
+                  nc -z oro-php-fpm-app 9000 2>&1 >/dev/null && OK=1 || sleep 1
+              done
+              echo
+              echo "Done"
+      containers:
+        - name: cron
+          image: 'oroinc/orocommerce-application:5.1.0'
+          ports:
+            - name: cron
+              containerPort: 1234
+          envFrom:
+            - configMapRef:
+                name: 'oro-cron'
+          command:
+            - cron
+          volumeMounts:
+            - mountPath: /var/www/oro/var/cache
+              name: cache
+            - mountPath: /var/www/oro/public/media
+              name: public_storage
+            - mountPath: /var/www/oro/var/data
+              name: private_storage
+      volumes:
+        - name: cache
+          emptyDir: {}
+        - name: public_storage
+          emptyDir: {}
+        - name: private_storage
+          emptyDir: {}
+---
+# Source: oro/templates/db.deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: 'oro-db'
+  labels:
+    katenary.io/component: db
+    katenary.io/project: 'oro'
+    katenary.io/release: 'oro'
+  annotations:
+    katenary.io/docker-compose-sha1: 26eb54535aff4cf701c2177e321811281ffb9a01
+    katenary.io/version: 2.0.0-beta2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      katenary.io/component: db
+      katenary.io/release: 'oro'
+  template:
+    metadata:
+      labels:
+        katenary.io/component: db
+        katenary.io/release: 'oro'
+    spec:
+      containers:
+        - name: db
+          image: 'docker.io/oroinc/pgsql:15.1-alpine'
+          ports:
+            - name: db
+              containerPort: 5432
+          envFrom:
+            - configMapRef:
+                name: 'oro-db'
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: db_data
+          livenessProbe:
+            exec:
+              command:
+                - pg_isready -U${POSTGRES_USER} -d${POSTGRES_DB}
+            periodSeconds: 10
+            initialDelaySeconds: 60
+            successThreshold: 1
+            failureThreshold: 3
+      volumes:
+        - name: db_data
+          emptyDir: {}
+---
+# Source: oro/templates/install.deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: 'oro-install'
+  labels:
+    katenary.io/component: install
+    katenary.io/project: 'oro'
+    katenary.io/release: 'oro'
+  annotations:
+    katenary.io/docker-compose-sha1: 26eb54535aff4cf701c2177e321811281ffb9a01
+    katenary.io/version: 2.0.0-beta2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      katenary.io/component: install
+      katenary.io/release: 'oro'
+  template:
+    metadata:
+      labels:
+        katenary.io/component: install
+        katenary.io/release: 'oro'
+    spec:
+      initContainers:
+        - name: check-mail
+          image: busybox
+          command:
+            - sh
+            - -c
+            - |-
+              OK=0
+              echo "Checking mail port"
+              while [ $OK != 1 ]; do
+                  echo -n "."
+                  nc -z oro-mail 1025 2>&1 >/dev/null && OK=1 || sleep 1
+              done
+              echo
+              echo "Done"
+        - name: check-db
+          image: busybox
+          command:
+            - sh
+            - -c
+            - |-
+              OK=0
+              echo "Checking db port"
+              while [ $OK != 1 ]; do
+                  echo -n "."
+                  nc -z oro-db 5432 2>&1 >/dev/null && OK=1 || sleep 1
+              done
+              echo
+              echo "Done"
+      containers:
+        - name: install
+          image: 'oroinc/orocommerce-application:5.1.0'
+          envFrom:
+            - configMapRef:
+                name: 'oro-install'
+          command:
+            - console
+            - oro:install
+            - --no-interaction
+            - --timeout=3600
+            - --user-name=
+            - --user-email=
+            - --user-firstname=
+            - --user-lastname=
+            - --user-password=
+            - --sample-data=
+            - --organization-name=
+            - --language=
+            - --formatting-code=
+            - --application-url=://
+          volumeMounts:
+            - mountPath: /var/www/oro/var/cache
+              name: cache
+            - mountPath: /var/www/oro/public/media
+              name: public_storage
+            - mountPath: /var/www/oro/var/data
+              name: private_storage
+      volumes:
+        - name: cache
+          emptyDir: {}
+        - name: public_storage
+          emptyDir: {}
+        - name: private_storage
+          emptyDir: {}
+---
+# Source: oro/templates/mail.deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: 'oro-mail'
+  labels:
+    katenary.io/component: mail
+    katenary.io/project: 'oro'
+    katenary.io/release: 'oro'
+  annotations:
+    katenary.io/docker-compose-sha1: 26eb54535aff4cf701c2177e321811281ffb9a01
+    katenary.io/version: 2.0.0-beta2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      katenary.io/component: mail
+      katenary.io/release: 'oro'
+  template:
+    metadata:
+      labels:
+        katenary.io/component: mail
+        katenary.io/release: 'oro'
+    spec:
+      containers:
+        - name: mail
+          image: 'mailhog/mailhog'
+          ports:
+            - name: mail
+              containerPort: 1025
+          env:
+            - name: MH_MAILDIR_PATH
+              value: '/home/mailhog/maildir'
+            - name: MH_UI_WEB_PATH
+              value: 'mailcatcher'
+            - name: MH_STORAGE
+              value: 'maildir'
+---
+# Source: oro/templates/restore.deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: 'oro-restore'
+  labels:
+    katenary.io/component: restore
+    katenary.io/project: 'oro'
+    katenary.io/release: 'oro'
+  annotations:
+    katenary.io/docker-compose-sha1: 26eb54535aff4cf701c2177e321811281ffb9a01
+    katenary.io/version: 2.0.0-beta2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      katenary.io/component: restore
+      katenary.io/release: 'oro'
+  template:
+    metadata:
+      labels:
+        katenary.io/component: restore
+        katenary.io/release: 'oro'
+    spec:
+      initContainers:
+        - name: check-db
+          image: busybox
+          command:
+            - sh
+            - -c
+            - |-
+              OK=0
+              echo "Checking db port"
+              while [ $OK != 1 ]; do
+                  echo -n "."
+                  nc -z oro-db 5432 2>&1 >/dev/null && OK=1 || sleep 1
+              done
+              echo
+              echo "Done"
+        - name: check-mail
+          image: busybox
+          command:
+            - sh
+            - -c
+            - |-
+              OK=0
+              echo "Checking mail port"
+              while [ $OK != 1 ]; do
+                  echo -n "."
+                  nc -z oro-mail 1025 2>&1 >/dev/null && OK=1 || sleep 1
+              done
+              echo
+              echo "Done"
+      containers:
+        - name: restore
+          image: 'oroinc/orocommerce-application-init:5.1.0'
+          envFrom:
+            - configMapRef:
+                name: 'oro-restore'
+          command:
+            - restore
+          volumeMounts:
+            - mountPath: /var/www/oro/var/cache
+              name: cache
+            - mountPath: /var/www/oro/public/media
+              name: public_storage
+            - mountPath: /var/www/oro/var/data
+              name: private_storage
+      volumes:
+        - name: cache
+          emptyDir: {}
+        - name: public_storage
+          emptyDir: {}
+        - name: private_storage
+          emptyDir: {}
+---
+# Source: oro/templates/web.deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: 'oro-web'
+  labels:
+    katenary.io/component: web
+    katenary.io/project: 'oro'
+    katenary.io/release: 'oro'
+  annotations:
+    katenary.io/docker-compose-sha1: 26eb54535aff4cf701c2177e321811281ffb9a01
+    katenary.io/version: 2.0.0-beta2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      katenary.io/component: web
+      katenary.io/release: 'oro'
+  template:
+    metadata:
+      labels:
+        katenary.io/component: web
+        katenary.io/release: 'oro'
+    spec:
+      initContainers:
+        - name: check-php-fpm-app
+          image: busybox
+          command:
+            - sh
+            - -c
+            - |-
+              OK=0
+              echo "Checking php-fpm-app port"
+              while [ $OK != 1 ]; do
+                  echo -n "."
+                  nc -z oro-php-fpm-app 9000 2>&1 >/dev/null && OK=1 || sleep 1
+              done
+              echo
+              echo "Done"
+        - name: check-ws
+          image: busybox
+          command:
+            - sh
+            - -c
+            - |-
+              OK=0
+              echo "Checking ws port"
+              while [ $OK != 1 ]; do
+                  echo -n "."
+                  nc -z oro-ws 8080 2>&1 >/dev/null && OK=1 || sleep 1
+              done
+              echo
+              echo "Done"
+      containers:
+        - name: web
+          image: 'oroinc/orocommerce-application:5.1.0'
+          ports:
+            - name: web
+              containerPort: 80
+          envFrom:
+            - configMapRef:
+                name: 'oro-web'
+          command:
+            - nginx
+          volumeMounts:
+            - mountPath: /var/www/oro/var/cache
+              name: cache
+            - mountPath: /var/www/oro/public/media
+              name: public_storage
+            - mountPath: /var/www/oro/var/data
+              name: private_storage
+      volumes:
+        - name: cache
+          emptyDir: {}
+        - name: public_storage
+          emptyDir: {}
+        - name: private_storage
+          emptyDir: {}
+---
+# Source: oro/templates/ws.deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: 'oro-ws'
+  labels:
+    katenary.io/component: ws
+    katenary.io/project: 'oro'
+    katenary.io/release: 'oro'
+  annotations:
+    katenary.io/docker-compose-sha1: 26eb54535aff4cf701c2177e321811281ffb9a01
+    katenary.io/version: 2.0.0-beta2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      katenary.io/component: ws
+      katenary.io/release: 'oro'
+  template:
+    metadata:
+      labels:
+        katenary.io/component: ws
+        katenary.io/release: 'oro'
+    spec:
+      initContainers:
+        - name: check-php-fpm-app
+          image: busybox
+          command:
+            - sh
+            - -c
+            - |-
+              OK=0
+              echo "Checking php-fpm-app port"
+              while [ $OK != 1 ]; do
+                  echo -n "."
+                  nc -z oro-php-fpm-app 9000 2>&1 >/dev/null && OK=1 || sleep 1
+              done
+              echo
+              echo "Done"
+        - name: check-mail
+          image: busybox
+          command:
+            - sh
+            - -c
+            - |-
+              OK=0
+              echo "Checking mail port"
+              while [ $OK != 1 ]; do
+                  echo -n "."
+                  nc -z oro-mail 1025 2>&1 >/dev/null && OK=1 || sleep 1
+              done
+              echo
+              echo "Done"
+        - name: check-db
+          image: busybox
+          command:
+            - sh
+            - -c
+            - |-
+              OK=0
+              echo "Checking db port"
+              while [ $OK != 1 ]; do
+                  echo -n "."
+                  nc -z oro-db 5432 2>&1 >/dev/null && OK=1 || sleep 1
+              done
+              echo
+              echo "Done"
+      containers:
+        - name: ws
+          image: 'oroinc/orocommerce-application:5.1.0'
+          ports:
+            - name: ws
+              containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: 'oro-ws'
+          command:
+            - console
+            - gos:websocket:server
+            - -v
+          volumeMounts:
+            - mountPath: /var/www/oro/var/cache
+              name: cache
+            - mountPath: /var/www/oro/public/media
+              name: public_storage
+            - mountPath: /var/www/oro/var/data
+              name: private_storage
+        - name: php-fpm-app
+          image: toreplace
+          ports:
+            - name: php-fpm-app
+              containerPort: 9000
+          envFrom:
+            - configMapRef:
+                name: 'oro-ws'
+          command:
+            - php-fpm
+          volumeMounts:
+            - mountPath: /var/www/oro/var/cache
+              name: cache
+            - mountPath: /var/www/oro/public/media
+              name: public_storage
+            - mountPath: /var/www/oro/var/data
+              name: private_storage
+          livenessProbe:
+            exec:
+              command:
+                - php-fpm-healthcheck
+            periodSeconds: 5
+            initialDelaySeconds: 120
+            successThreshold: 1
+            failureThreshold: 3
+      volumes:
+        - name: cache
+          emptyDir: {}
+        - name: public_storage
+          emptyDir: {}
+        - name: private_storage
+          emptyDir: {}
