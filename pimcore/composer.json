@@ -1,0 +1,73 @@
+{
+  "name": "pimcore/demo",
+  "type": "project",
+  "description": "Demo Application for Pimcore 6",
+  "license": "GPL-3.0-or-later",
+  "config": {
+    "optimize-autoloader": true,
+    "sort-packages": true,
+    "discard-changes": true,
+    "process-timeout": 0,
+    "allow-plugins": {
+      "php-http/discovery": false,
+      "symfony/runtime": true
+    }
+  },
+  "prefer-stable": true,
+  "minimum-stability": "dev",
+  "require": {
+    "chrome-php/chrome": "^1.6",
+    "gotenberg/gotenberg-php": "^1.1",
+    "php-http/guzzle7-adapter": "^0.1.1",
+    "php-http/httplug-bundle": "^1",
+    "pimcore/admin-ui-classic-bundle": "^1.2",
+    "pimcore/customer-management-framework-bundle": "^4.0",
+    "pimcore/data-hub": "^1.6",
+    "pimcore/data-importer": "^1.8",
+    "pimcore/ecommerce-framework-bundle": "^1.0",
+    "pimcore/newsletter-bundle": "^1.0",
+    "pimcore/payment-provider-paypal-smart-payment-button": "^2.0",
+    "pimcore/pimcore": "^11.1",
+    "pimcore/web-to-print-bundle": "^1.0",
+    "pimcore/web2print-tools-bundle": "^5.0",
+    "symfony/dotenv": "^6.2",
+    "symfony/intl": "^6.2",
+    "symfony/runtime": "^6.2"
+  },
+  "suggest": {
+    "pimcore/elasticsearch-client": "Required for Elastic Search service"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/",
+      "Pimcore\\Model\\DataObject\\": "var/classes/DataObject"
+    }
+  },
+  "scripts": {
+    "post-create-project-cmd": "Pimcore\\Composer::postCreateProject",
+    "post-install-cmd": [
+      "Pimcore\\Composer::postInstall",
+      "@pimcore-scripts"
+    ],
+    "post-update-cmd": [
+      "Pimcore\\Composer::postUpdate",
+      "@pimcore-scripts"
+    ],
+    "pimcore-scripts": [
+      "Pimcore\\Composer::clearCache",
+      "Pimcore\\Composer::installAssets"
+    ]
+  },
+  "extra": {
+    "symfony-assets-install": "relative"
+  },
+  "repositories": {
+    "dev": {
+      "type": "path",
+      "url": "./dev/*/*",
+      "options": {
+        "symlink": true
+      }
+    }
+  }
+}
