@@ -1,0 +1,20 @@
+{{ if .Values.consumer.persistence.cache.enabled }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: '{{ .Release.Name }}-cache'
+  labels:
+    katenary.io/component: consumer
+    katenary.io/project: '{{ .Chart.Name }}'
+    katenary.io/pvc-name: cache
+    katenary.io/release: '{{ .Release.Name }}'
+  annotations:
+    katenary.io/docker-compose-sha1: 67b76b9b61f97b64634b3156d409f504f51a215d
+    katenary.io/version: 2.0.0-beta2
+spec:
+  resources:
+    requests:
+      storage: '{{ .Values.consumer.persistence.cache.capacity }}'
+  accessModes:
+    - ReadWriteOnce
+{{- end -}}

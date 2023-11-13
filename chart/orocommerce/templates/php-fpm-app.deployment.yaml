@@ -1,0 +1,101 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: '{{ .Release.Name }}-php-fpm-app'
+  labels:
+    katenary.io/component: php-fpm-app
+    katenary.io/project: '{{ .Chart.Name }}'
+    katenary.io/release: '{{ .Release.Name }}'
+  annotations:
+    katenary.io/docker-compose-sha1: 67b76b9b61f97b64634b3156d409f504f51a215d
+    katenary.io/version: 2.0.0-beta2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      katenary.io/component: php-fpm-app
+      katenary.io/release: '{{ .Release.Name }}'
+  template:
+    metadata:
+      labels:
+        katenary.io/component: php-fpm-app
+        katenary.io/release: '{{ .Release.Name }}'
+    spec:
+      initContainers:
+        - name: check-mail
+          image: busybox
+          command:
+            - sh
+            - -c
+            - |-
+              OK=0
+              echo "Checking mail port"
+              while [ $OK != 1 ]; do
+                  echo -n "."
+                  nc -z {{ .Release.Name }}-mail 1025 2>&1 >/dev/null && OK=1 || sleep 1
+              done
+              echo
+              echo "Done"
+        - name: check-db
+          image: busybox
+          command:
+            - sh
+            - -c
+            - |-
+              OK=0
+              echo "Checking db port"
+              while [ $OK != 1 ]; do
+                  echo -n "."
+                  nc -z {{ .Release.Name }}-db 5432 2>&1 >/dev/null && OK=1 || sleep 1
+              done
+              echo
+              echo "Done"
+      containers:
+        - name: php-fpm-app
+          image: '{{ .Values.php-fpm-app.repository.image }}{{ if ne .Values.php-fpm-app.repository.tag "" }}:{{ .Values.php-fpm-app.repository.tag }}{{ end }}'
+          ports:
+            - name: php-fpm-app
+              containerPort: 9000
+          envFrom:
+            - configMapRef:
+                name: '{{ .Release.Name }}-php-fpm-app'
+          command:
+            - php-fpm
+          volumeMounts:
+            - mountPath: /var/www/oro/var/cache
+              name: cache
+            - mountPath: /var/www/oro/public/media
+              name: public_storage
+            - mountPath: /var/www/oro/var/data
+              name: private_storage
+          livenessProbe:
+            exec:
+              command:
+                - php-fpm-healthcheck
+            periodSeconds: 5
+            initialDelaySeconds: 120
+            successThreshold: 1
+            failureThreshold: 3
+      volumes:
+        - name: cache
+          {{- if  .Values.php-fpm-app.persistence.cache.enabled }}
+          persistentVolumeClaim:
+            claimName: '{{ .Release.Name }}-cache'
+          {{ else }}
+          emptyDir: {}
+          {{- end }}
+        - name: public_storage
+          {{- if  .Values.php-fpm-app.persistence.public_storage.enabled }}
+          persistentVolumeClaim:
+            claimName: '{{ .Release.Name }}-public_storage'
+          {{ else }}
+          emptyDir: {}
+          {{- end }}
+        - name: private_storage
+          {{- if  .Values.php-fpm-app.persistence.private_storage.enabled }}
+          persistentVolumeClaim:
+            claimName: '{{ .Release.Name }}-private_storage'
+          {{ else }}
+          emptyDir: {}
+          {{- end }}
+

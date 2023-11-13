@@ -1,0 +1,8 @@
+# Create on 2023-11-13T06:12:47+01:00
+# Katenary command line: /usr/local/bin/katenary convert -c docker-compose.yaml -o ./chart
+apiVersion: v2
+appVersion: master-a790d44
+description: A helm chart for orocommerce
+name: orocommerce
+type: application
+version: 0.1.0
