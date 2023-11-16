@@ -17,13 +17,41 @@ additionalContainers:
             cpu: 1000m
             ephemeral-storage: 1Gi
             memory: 1024Mi
+    env:
+      - name: ORO_APP_DOMAIN
+        value: {{.Values.env.ORO_APP_DOMAIN}}
+      - name: ORO_APP_PROTOCOL
+        value: {{.Values.env.ORO_APP_PROTOCOL}}
+      - name: ORO_FORMATTING_CODE
+        value: {{.Values.env.ORO_FORMATTING_CODE}}
+      - name: ORO_LANGUAGE
+        value: {{.Values.env.ORO_LANGUAGE}}
+      - name: ORO_NGINX_HOST
+        value: {{.Values.env.ORO_NGINX_HOST}}
+      - name: ORO_ORGANIZATION_NAME
+        value: {{.Values.env.ORO_ORGANIZATION_NAME}}
+      - name: ORO_SAMPLE_DATA
+        value: {{.Values.env.ORO_SAMPLE_DATA}}
+      - name: ORO_USER_EMAIL
+        value: {{.Values.env.ORO_USER_EMAIL}}
+      - name: ORO_USER_FIRSTNAME
+        value: {{.Values.env.ORO_USER_FIRSTNAME}}
+      - name: ORO_USER_LASTNAME
+        value: {{.Values.env.ORO_USER_LASTNAME}}
+      - name: ORO_USER_NAME
+        value: {{.Values.env.ORO_USER_NAME}}
+      - name: ORO_USER_PASSWORD
+        value: {{.Values.env.ORO_USER_PASSWORD}}
+      - name: TZ
+        value: {{.Values.env.TZ}}
+
     volumeMounts:
       - name: cache
-        mountPath: /var/www/oro/var/cache
+        mountPath: {{.Values.persistence.cache.mountPath}}
       - name: public_storage
-        mountPath: /var/www/oro/public/media
+        mountPath: {{.Values.persistence.public_storage.mountPath}}
       - name: private_storage
-        mountPath: /var/www/oro/var/data
+        mountPath: {{.Values.persistence.private_storage.mountPath}}
     securityContext:
       runAsUser: 1000
       runAsGroup: 1000     
@@ -41,13 +69,40 @@ additionalContainers:
             cpu: 1000m
             ephemeral-storage: 1Gi
             memory: 1024Mi
+    env:
+      - name: ORO_APP_DOMAIN
+        value: {{.Values.env.ORO_APP_DOMAIN}}
+      - name: ORO_APP_PROTOCOL
+        value: {{.Values.env.ORO_APP_PROTOCOL}}
+      - name: ORO_FORMATTING_CODE
+        value: {{.Values.env.ORO_FORMATTING_CODE}}
+      - name: ORO_LANGUAGE
+        value: {{.Values.env.ORO_LANGUAGE}}
+      - name: ORO_NGINX_HOST
+        value: {{.Values.env.ORO_NGINX_HOST}}
+      - name: ORO_ORGANIZATION_NAME
+        value: {{.Values.env.ORO_ORGANIZATION_NAME}}
+      - name: ORO_SAMPLE_DATA
+        value: {{.Values.env.ORO_SAMPLE_DATA}}
+      - name: ORO_USER_EMAIL
+        value: {{.Values.env.ORO_USER_EMAIL}}
+      - name: ORO_USER_FIRSTNAME
+        value: {{.Values.env.ORO_USER_FIRSTNAME}}
+      - name: ORO_USER_LASTNAME
+        value: {{.Values.env.ORO_USER_LASTNAME}}
+      - name: ORO_USER_NAME
+        value: {{.Values.env.ORO_USER_NAME}}
+      - name: ORO_USER_PASSWORD
+        value: {{.Values.env.ORO_USER_PASSWORD}}
+      - name: TZ
+        value: {{.Values.env.TZ}}
     volumeMounts:
       - name: cache
-        mountPath: /var/www/oro/var/cache
+        mountPath: {{.Values.persistence.cache.mountPath}}
       - name: public_storage
-        mountPath: /var/www/oro/public/media
+        mountPath: {{.Values.persistence.public_storage.mountPath}}
       - name: private_storage
-        mountPath: /var/www/oro/var/data
+        mountPath: {{.Values.persistence.private_storage.mountPath}}
 
     securityContext:
       runAsUser: 1000
