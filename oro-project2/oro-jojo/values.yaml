@@ -3,6 +3,56 @@ image:
   tag: 5.1.0
   pullPolicy: IfNotPresent
 
+additionalContainers:
+  php-fpm:
+    image: "{{.Values.image.repository}}:{{.Values.image.tag}}"
+    imagePullPolicy: IfNotPresent
+    command: php-fpm
+    resources:
+        limits:
+            cpu: 5000m
+            ephemeral-storage: 1Gi
+            memory: 5120Mi
+        requests:
+            cpu: 1000m
+            ephemeral-storage: 1Gi
+            memory: 1024Mi
+    volumeMounts:
+      - name: cache
+        mountPath: /var/www/oro/var/cache
+      - name: public_storage
+        mountPath: /var/www/oro/public/media
+      - name: private_storage
+        mountPath: /var/www/oro/var/data
+    securityContext:
+      runAsUser: 1000
+      runAsGroup: 1000     
+
+  ws:
+    image: "{{.Values.image.repository}}:{{.Values.image.tag}}"
+    imagePullPolicy: IfNotPresent
+    command: console gos:websocket:server -v
+    resources:
+        limits:
+            cpu: 5000m
+            ephemeral-storage: 1Gi
+            memory: 5120Mi
+        requests:
+            cpu: 1000m
+            ephemeral-storage: 1Gi
+            memory: 1024Mi
+    volumeMounts:
+      - name: cache
+        mountPath: /var/www/oro/var/cache
+      - name: public_storage
+        mountPath: /var/www/oro/public/media
+      - name: private_storage
+        mountPath: /var/www/oro/var/data
+
+    securityContext:
+      runAsUser: 1000
+      runAsGroup: 1000     
+
 env:
   TZ: UTC
   ORO_USER_NAME: admin
@@ -34,7 +84,7 @@ ingress:
 persistence:
   cache:
     enabled: true
-    mountPath: /var/www/html
+    mountPath: /var/www/oro/var/cache
     accessMode: ReadWriteMany
     size: 1Gb
   public_storage:
