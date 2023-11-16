@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{.Values.metadata.name}}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{.Values.svc.name}}
+  template:
+    metadata:
+      labels:
+        app: {{.Values.svc.name}}
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:latest
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_DB
+              value: {{.Values.container.env.db}}
+            - name: POSTGRES_USER
+              value: {{.Values.container.env.name}}
+            - name: POSTGRES_PASSWORD
+              value: {{.Values.container.env.password}}
+          volumeMounts:
+            - name: postgres-storage
+              mountPath: /var/lib/postgresql/data
+      volumes:
+        - name: postgres-storage
+          emptyDir: {}
+# project: default
+# source:
+#   repoURL: 'https://charts.bitnami.com/bitnami'
+#   targetRevision: 13.2.9
+#   helm:
+#     values: |-
+#       postgresql : 
+#           auth:
+#             postgresPassword: "Simplon12345."
+#             username: "eml"
+#             password: "Simplon12345."
+#             database: "matomidb"
+#   chart: postgresql
+# destination:
+#   server: 'https://kubernetes.default.svc'
+#   namespace: oro-sbx
+# syncPolicy:
+#   automated: {}
+#   syncOptions:
+#     - CreateNamespace=true

@@ -1,0 +1,56 @@
+image:
+  repository: oroinc/orocommerce-application
+  tag: 5.1.0
+  pullPolicy: IfNotPresent
+
+env:
+  TZ: UTC
+  ORO_USER_NAME: admin
+  ORO_USER_PASSWORD: admin
+  ORO_USER_FIRSTNAME: John
+  ORO_USER_LASTNAME: Doe
+  ORO_USER_EMAIL: admin@example.com
+  ORO_SAMPLE_DATA: y
+  ORO_ORGANIZATION_NAME: ORO
+  ORO_LANGUAGE: en
+  ORO_FORMATTING_CODE: en_US
+  ORO_APP_PROTOCOL: http
+  ORO_APP_DOMAIN: oro.demo
+  ORO_NGINX_HOST: web
+  #ORO_INSTALL_OPTIONS=
+
+service:
+  main:
+    ports:
+      http:
+        port: 80
+
+ingress:
+  # -- Enable and configure ingress settings for the chart under this key.
+  # @default -- See values.yaml
+  main:
+    enabled: false
+
+persistence:
+  cache:
+    enabled: true
+    mountPath: /var/www/html
+    accessMode: ReadWriteMany
+    size: 1Gb
+  public_storage:
+    enabled: true
+    mountPath: /var/www/oro/public/media
+    accessMode: ReadWriteMany
+    size: 1Gb
+  private_storage:
+    enabled: true
+    mountPath: /var/www/oro/var/data
+    accessMode: ReadWriteMany
+    size: 1Gb
+  
+config:
+  nginx-server.conf: {}
+
+  php-settings.ini: {}
+
+  php-fpm-server.conf: {}

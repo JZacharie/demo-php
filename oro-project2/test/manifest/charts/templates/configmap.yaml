@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: web-configmap
+data:
+  ORO_DB_VERSION: "{{ .Values.db.version }}"
+  ORO_PG_VER: "{{ .Values.db.version }}-alpine"
+  ORO_DB_HOST: "db"
+  ORO_DB_PORT: "5432"
+  # ... (Other configurations from .env)

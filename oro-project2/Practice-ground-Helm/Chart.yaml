@@ -1,0 +1,10 @@
+
+apiVersion : v2
+
+name : oro-sbx-project
+
+version : v1
+
+description : A test ground for oro project
+
+appVersion: v1.0

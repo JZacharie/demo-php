@@ -1,0 +1,14 @@
+
+
+
+metadata:
+  name : postgres-deployment-prod
+
+svc : 
+  name : postgres-service-prod
+
+container : 
+  env:
+    db: emldb-prod
+    name : eml
+    password : "Simplon12345."

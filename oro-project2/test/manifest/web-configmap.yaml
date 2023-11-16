@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: web-configmap
+data:
+  ORO_DB_VERSION: "15.1"
+  ORO_PG_VER: "15.1-alpine"
+  ORO_DB_HOST: "db"
+  ORO_DB_PORT: "5432"
+  ORO_DB_NAME: "orodb"
+  ORO_DB_USER: "orodbuser"
+  ORO_DB_PASSWORD: "orodbpass"
+  ORO_DB_DSN: "postgres://$ORO_DB_USER:$ORO_DB_PASSWORD@${ORO_DB_HOST}:${ORO_DB_PORT}/$ORO_DB_NAME?sslmode=disable&charset=utf8&serverVersion=$ORO_DB_VERSION"
+  ORO_DB_ROOT_USER: "orodbuser"
+  ORO_DB_ROOT_PASSWORD: "orodbpass"
+  ORO_MQ_DSN: "dbal:"
+  ORO_SESSION_DSN: "native:"
+  ORO_SEARCH_ENGINE_DSN: "orm:?prefix=oro_search"
+  ORO_WEBSITE_SEARCH_ENGINE_DSN: "orm:?prefix=oro_website_search"
+  ORO_MAILER_DSN: "smtp://mail:1025"
+  ORO_WEBSOCKET_SERVER_DSN: "//0.0.0.0:8080"
+  ORO_WEBSOCKET_FRONTEND_DSN: "//*:80/ws"
+  ORO_WEBSOCKET_BACKEND_DSN: "tcp://ws:8080"

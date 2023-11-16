@@ -1,0 +1,216 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: C:\ProgramData\chocolatey\lib\kubernetes-kompose\tools\kompose.exe convert -c
+    kompose.version: 1.31.2 (a92241f79)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: application
+  name: application
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: application
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: C:\ProgramData\chocolatey\lib\kubernetes-kompose\tools\kompose.exe convert -c
+        kompose.version: 1.31.2 (a92241f79)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/docker-demo-default: "true"
+        io.kompose.service: application
+    spec:
+      containers:
+        - args:
+            - --
+            - "true"
+          env:
+            - name: ORO_APP_DOMAIN
+              valueFrom:
+                configMapKeyRef:
+                  key: ORO_APP_DOMAIN
+                  name: C:\Users\mlezekiel\Desktop\docker-demo\-env
+            - name: ORO_APP_PROTOCOL
+              valueFrom:
+                configMapKeyRef:
+                  key: ORO_APP_PROTOCOL
+                  name: C:\Users\mlezekiel\Desktop\docker-demo\-env
+            - name: ORO_DB_DSN
+              valueFrom:
+                configMapKeyRef:
+                  key: ORO_DB_DSN
+                  name: C:\Users\mlezekiel\Desktop\docker-demo\-env
+            - name: ORO_DB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  key: ORO_DB_HOST
+                  name: C:\Users\mlezekiel\Desktop\docker-demo\-env
+            - name: ORO_DB_NAME
+              valueFrom:
+                configMapKeyRef:
+                  key: ORO_DB_NAME
+                  name: C:\Users\mlezekiel\Desktop\docker-demo\-env
+            - name: ORO_DB_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  key: ORO_DB_PASSWORD
+                  name: C:\Users\mlezekiel\Desktop\docker-demo\-env
+            - name: ORO_DB_PORT
+              valueFrom:
+                configMapKeyRef:
+                  key: ORO_DB_PORT
+                  name: C:\Users\mlezekiel\Desktop\docker-demo\-env
+            - name: ORO_DB_ROOT_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  key: ORO_DB_ROOT_PASSWORD
+                  name: C:\Users\mlezekiel\Desktop\docker-demo\-env
+            - name: ORO_DB_ROOT_USER
+              valueFrom:
+                configMapKeyRef:
+                  key: ORO_DB_ROOT_USER
+                  name: C:\Users\mlezekiel\Desktop\docker-demo\-env
+            - name: ORO_DB_USER
+              valueFrom:
+                configMapKeyRef:
+                  key: ORO_DB_USER
+                  name: C:\Users\mlezekiel\Desktop\docker-demo\-env
+            - name: ORO_DB_VERSION
+              valueFrom:
+                configMapKeyRef:
+                  key: ORO_DB_VERSION
+                  name: C:\Users\mlezekiel\Desktop\docker-demo\-env
+            - name: ORO_ENV
+              valueFrom:
+                configMapKeyRef:
+                  key: ORO_ENV
+                  name: C:\Users\mlezekiel\Desktop\docker-demo\-env
+            - name: ORO_FORMATTING_CODE
+              valueFrom:
+                configMapKeyRef:
+                  key: ORO_FORMATTING_CODE
+                  name: C:\Users\mlezekiel\Desktop\docker-demo\-env
+            - name: ORO_IMAGE
+              valueFrom:
+                configMapKeyRef:
+                  key: ORO_IMAGE
+                  name: C:\Users\mlezekiel\Desktop\docker-demo\-env
+            - name: ORO_IMAGE_INIT
+              valueFrom:
+                configMapKeyRef:
+                  key: ORO_IMAGE_INIT
+                  name: C:\Users\mlezekiel\Desktop\docker-demo\-env
+            - name: ORO_IMAGE_TAG
+              valueFrom:
+                configMapKeyRef:
+                  key: ORO_IMAGE_TAG
+                  name: C:\Users\mlezekiel\Desktop\docker-demo\-env
+            - name: ORO_INSTALL_OPTIONS
+              valueFrom:
+                configMapKeyRef:
+                  key: ORO_INSTALL_OPTIONS
+                  name: C:\Users\mlezekiel\Desktop\docker-demo\-env
+            - name: ORO_LANGUAGE
+              valueFrom:
+                configMapKeyRef:
+                  key: ORO_LANGUAGE
+                  name: C:\Users\mlezekiel\Desktop\docker-demo\-env
+            - name: ORO_MAILER_DSN
+              valueFrom:
+                configMapKeyRef:
+                  key: ORO_MAILER_DSN
+                  name: C:\Users\mlezekiel\Desktop\docker-demo\-env
+            - name: ORO_MQ_DSN
+              valueFrom:
+                configMapKeyRef:
+                  key: ORO_MQ_DSN
+                  name: C:\Users\mlezekiel\Desktop\docker-demo\-env
+            - name: ORO_NGINX_HOST
+              valueFrom:
+                configMapKeyRef:
+                  key: ORO_NGINX_HOST
+                  name: C:\Users\mlezekiel\Desktop\docker-demo\-env
+            - name: ORO_ORGANIZATION_NAME
+              valueFrom:
+                configMapKeyRef:
+                  key: ORO_ORGANIZATION_NAME
+                  name: C:\Users\mlezekiel\Desktop\docker-demo\-env
+            - name: ORO_PG_VER
+              valueFrom:
+                configMapKeyRef:
+                  key: ORO_PG_VER
+                  name: C:\Users\mlezekiel\Desktop\docker-demo\-env
+            - name: ORO_SAMPLE_DATA
+              valueFrom:
+                configMapKeyRef:
+                  key: ORO_SAMPLE_DATA
+                  name: C:\Users\mlezekiel\Desktop\docker-demo\-env
+            - name: ORO_SEARCH_ENGINE_DSN
+              valueFrom:
+                configMapKeyRef:
+                  key: ORO_SEARCH_ENGINE_DSN
+                  name: C:\Users\mlezekiel\Desktop\docker-demo\-env
+            - name: ORO_SESSION_DSN
+              valueFrom:
+                configMapKeyRef:
+                  key: ORO_SESSION_DSN
+                  name: C:\Users\mlezekiel\Desktop\docker-demo\-env
+            - name: ORO_USER_EMAIL
+              valueFrom:
+                configMapKeyRef:
+                  key: ORO_USER_EMAIL
+                  name: C:\Users\mlezekiel\Desktop\docker-demo\-env
+            - name: ORO_USER_FIRSTNAME
+              valueFrom:
+                configMapKeyRef:
+                  key: ORO_USER_FIRSTNAME
+                  name: C:\Users\mlezekiel\Desktop\docker-demo\-env
+            - name: ORO_USER_LASTNAME
+              valueFrom:
+                configMapKeyRef:
+                  key: ORO_USER_LASTNAME
+                  name: C:\Users\mlezekiel\Desktop\docker-demo\-env
+            - name: ORO_USER_NAME
+              valueFrom:
+                configMapKeyRef:
+                  key: ORO_USER_NAME
+                  name: C:\Users\mlezekiel\Desktop\docker-demo\-env
+            - name: ORO_USER_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  key: ORO_USER_PASSWORD
+                  name: C:\Users\mlezekiel\Desktop\docker-demo\-env
+            - name: ORO_USER_RUNTIME
+              valueFrom:
+                configMapKeyRef:
+                  key: ORO_USER_RUNTIME
+                  name: C:\Users\mlezekiel\Desktop\docker-demo\-env
+            - name: ORO_WEBSITE_SEARCH_ENGINE_DSN
+              valueFrom:
+                configMapKeyRef:
+                  key: ORO_WEBSITE_SEARCH_ENGINE_DSN
+                  name: C:\Users\mlezekiel\Desktop\docker-demo\-env
+            - name: ORO_WEBSOCKET_BACKEND_DSN
+              valueFrom:
+                configMapKeyRef:
+                  key: ORO_WEBSOCKET_BACKEND_DSN
+                  name: C:\Users\mlezekiel\Desktop\docker-demo\-env
+            - name: ORO_WEBSOCKET_FRONTEND_DSN
+              valueFrom:
+                configMapKeyRef:
+                  key: ORO_WEBSOCKET_FRONTEND_DSN
+                  name: C:\Users\mlezekiel\Desktop\docker-demo\-env
+            - name: ORO_WEBSOCKET_SERVER_DSN
+              valueFrom:
+                configMapKeyRef:
+                  key: ORO_WEBSOCKET_SERVER_DSN
+                  name: C:\Users\mlezekiel\Desktop\docker-demo\-env
+          image: ':'
+          name: application
+          resources: {}
+      restartPolicy: Always
+status: {}

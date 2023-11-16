@@ -1,0 +1,12 @@
+
+web:
+  image: oroinc/orocommerce-application:5.1.0
+  port: 80
+
+db:
+  image: docker.io/oroinc/pgsql:15.1-alpine
+
+dbPersistentVolume:
+  enabled: true
+  storageSize: 1Gi
+  hostPath: /path/to/host/db/directory

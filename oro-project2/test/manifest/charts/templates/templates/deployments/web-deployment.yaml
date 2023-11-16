@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+        - name: web
+          image: {{ .Values.web.image }}
+          command: ["nginx"]
+          envFrom:
+            - configMapRef:
+                name: web-configmap
+          ports:
+            - containerPort: {{ .Values.web.port }}

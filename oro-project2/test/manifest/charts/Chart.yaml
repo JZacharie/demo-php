@@ -1,0 +1,4 @@
+apiVersion: v2
+name: oro-commerce
+description: A Helm chart for OroCommerce
+version: 0.1.0
