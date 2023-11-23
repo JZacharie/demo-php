@@ -13,7 +13,8 @@ sudo systemctl enable docker
 sudo usermod -aG docker $USER
 newgrp docker
 sudo yum install python-pip -y
-sudo pip install docker-compose
+sudo yum remove python3-requests -y
+sudo pip install docker-compose -y
 docker-compose -v
 
 sudo mkdir -p /var/www/html
@@ -108,8 +109,9 @@ volumes:
     pimcore-demo-database:
 EOF
 
-#Start MicroServices
+#Pull MicroServices
 docker-compose pull
+#Start MicroServices
 docker-compose up -d
 sleep 5
 . .env
