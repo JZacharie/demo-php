@@ -12,6 +12,9 @@ sudo systemctl start docker
 sudo systemctl enable docker
 sudo usermod -aG docker $USER
 newgrp docker
+sudo yum install python-pip -y
+sudo pip install docker-compose
+docker-compose -v
 
 sudo mkdir -p /var/www/html
 sudo -i
@@ -36,7 +39,6 @@ PIMCORE_INSTALL_SMTP=smtps://serviceaccountsmtp:changeit@smtp.societe.io:463
 #TRUSTED_HOSTS='^(localhost|example\.com)$'
 ###< symfony/framework-bundle ###
 EOF
-#cp int.env ./pimcore/.env
 
 cat >./30-pimcore-php.ini<<EOF
 upload_max_filesize = 10G
@@ -79,10 +81,6 @@ services:
         environment:
             COMPOSER_HOME: /var/www/html
             PHP_IDE_CONFIG: serverName=localhost
-#            PIMCORE_INSTALL_MYSQL_USERNAME: pimcore
-#            PIMCORE_INSTALL_MYSQL_PASSWORD: pimcore
-#            PIMCORE_INSTALL_ADMIN_USERNAME: admin
-#            PIMCORE_INSTALL_ADMIN_PASSWORD: admin
         env_file:
             - .env
         depends_on:
@@ -110,21 +108,21 @@ volumes:
     pimcore-demo-database:
 EOF
 
-# #Patch User
-# sed -i "s|#user: '1000:1000'|user: '1000:1000'|" docker-compose.yaml
-# #Start MicroServices
-# docker-compose pull
-# docker-compose up -d
-# sleep 5
-# . .env
-# pwd
+#Start MicroServices
+docker-compose pull
+docker-compose up -d
+sleep 5
+. .env
+pwd
+
 # #Configure pimcore from ENV
-# docker compose exec php vendor/bin/pimcore-install --no-interaction
-# docker compose exec php composer require pimcore/data-importer
-# docker compose exec php bin/console pimcore:bundle:list
-# docker compose exec php bin/console pimcore:search-backend-reindex
-# #Configure SMTP
-# sed -i 's/#    mailer:/    mailer:/' config/config.yaml
-# sed -i 's/#        transports:/        transports:/' config/config.yaml
-# sed -i 's/#            main: /            main: /' config/config.yaml
-# sed -i "s|main: smtp://user:pass@smtp.example.com:port|main: $PIMCORE_INSTALL_SMTP|" config/config.yaml
+chown 1000:1000 . -R
+docker-compose exec php vendor/bin/pimcore-install --no-interaction
+docker-compose exec php composer require pimcore/data-importer
+docker-compose exec php bin/console pimcore:bundle:list
+docker-compose exec php bin/console pimcore:search-backend-reindex
+#Configure SMTP
+sed -i 's/#    mailer:/    mailer:/' config/config.yaml
+sed -i 's/#        transports:/        transports:/' config/config.yaml
+sed -i 's/#            main: /            main: /' config/config.yaml
+sed -i "s|main: smtp://user:pass@smtp.example.com:port|main: $PIMCORE_INSTALL_SMTP|" config/config.yaml
