@@ -117,12 +117,13 @@ sleep 5
 . .env
 pwd
 
-# #Configure pimcore from ENV
+#Configure pimcore from ENV
 chown 1000:1000 . -R
 docker-compose exec php vendor/bin/pimcore-install --no-interaction
 docker-compose exec php composer require pimcore/data-importer
 docker-compose exec php bin/console pimcore:bundle:list
 docker-compose exec php bin/console pimcore:search-backend-reindex
+
 #Configure SMTP
 sed -i 's/#    mailer:/    mailer:/' config/config.yaml
 sed -i 's/#        transports:/        transports:/' config/config.yaml
