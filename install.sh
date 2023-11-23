@@ -6,7 +6,7 @@ set -o nounset
 set -o pipefail
 
 echo "Installing docker..."
-sudo dnf update
+sudo dnf update -y
 sudo dnf install docker -y
 sudo systemctl start docker
 sudo systemctl enable docker
