@@ -39,7 +39,7 @@ PIMCORE_INSTALL_SMTP=smtps://serviceaccountsmtp:changeit@smtp.societe.io:463
 EOF
 #cp int.env ./pimcore/.env
 
-cat >./pimcore/30-pimcore-php.ini<<EOF
+cat >./30-pimcore-php.ini<<EOF
 upload_max_filesize = 10G
 memory_limit = 512M
 post_max_size = 10G
