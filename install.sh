@@ -14,7 +14,7 @@ sudo usermod -aG docker $USER
 newgrp docker
 sudo yum install python-pip -y
 sudo yum remove python3-requests -y
-sudo pip install docker-compose -y
+sudo pip install docker-compose
 docker-compose -v
 
 sudo mkdir -p /var/www/html
