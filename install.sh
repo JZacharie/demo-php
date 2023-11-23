@@ -7,7 +7,7 @@ set -o pipefail
 
 echo "Installing docker..."
 sudo dnf update
-sudo dnf install docker
+sudo dnf install docker -y
 sudo systemctl start docker
 sudo systemctl enable docker
 sudo systemctl status docker
