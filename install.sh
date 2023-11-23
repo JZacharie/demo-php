@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+
+#curl -L https://raw.githubusercontent.com/runtipi/runtipi/master/scripts/install.sh | bash
 set -o errexit
 set -o nounset
 set -o pipefail
