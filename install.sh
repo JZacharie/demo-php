@@ -125,10 +125,10 @@ docker-compose exec php bin/console pimcore:bundle:list
 docker-compose exec php bin/console pimcore:search-backend-reindex
 
 #Configure SMTP
-sed -i 's/#    mailer:/    mailer:/' config/config.yaml
-sed -i 's/#        transports:/        transports:/' config/config.yaml
-sed -i 's/#            main: /            main: /' config/config.yaml
-sed -i "s|main: smtp://user:pass@smtp.example.com:port|main: $PIMCORE_INSTALL_SMTP|" config/config.yaml
+# sed -i 's/#    mailer:/    mailer:/' config/config.yaml
+# sed -i 's/#        transports:/        transports:/' config/config.yaml
+# sed -i 's/#            main: /            main: /' config/config.yaml
+# sed -i "s|main: smtp://user:pass@smtp.example.com:port|main: $PIMCORE_INSTALL_SMTP|" config/config.yaml
 
 docker-compose down
 docker-compose up -d
